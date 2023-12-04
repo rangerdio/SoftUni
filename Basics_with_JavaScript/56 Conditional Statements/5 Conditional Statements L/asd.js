@@ -1,6 +1,0 @@
-function vladi(input) {
-
-
-}
-
-vladi();
