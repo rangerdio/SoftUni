@@ -1,7 +1,7 @@
 # Ignore my_folder		.history for Basics_with_JavaScript
 .idea/
 z/
-.history/
+#.history/
 
 # Ignore Word documents
 *.doc
