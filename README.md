@@ -1,3 +1,5 @@
-# Programming_Fundamentals_with_Python
+# SoftUni Courses Solutions
 
-## Solutions to Programming Fundamentals with Python, arranged by Modules.
+## Solutions Basics with Python
+## Solutions to Basics with JavaScript
+## Solutions to Fundamentals with Python
