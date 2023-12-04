@@ -1,0 +1,6 @@
+function vladi(input) {
+
+
+}
+
+vladi();
