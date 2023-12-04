@@ -3,6 +3,10 @@
 z/
 .history/
 
+# Ignore Presentations
+*.pptx
+*.ppt
+
 # Ignore Word documents
 *.doc
 *.docx
