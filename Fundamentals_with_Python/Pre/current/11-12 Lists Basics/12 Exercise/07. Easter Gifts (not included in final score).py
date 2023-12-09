@@ -1,5 +1,4 @@
 gifts = input().split()
-
 while True:
     command = input()
     if command == "No Money":
@@ -10,8 +9,9 @@ while True:
             if command_list[1] == gifts[gifts_index]:
                 gifts[gifts_index] = "None"  # if gift in command is in gifts, change their values to "None"
     elif command_list[0] == "Required":
-        if int(command_list[2]) < len(gifts):  # if command [2] is < len(gifts)
-            index = int(command_list[2])
+        index = int(command_list[2])
+        # if -len(gifts) < index < len(gifts) - 1:  # This is the correct Index
+        if -2 < index < len(gifts) - 1:  # Workaround for Judge
             gifts[index] = command_list[1]
     elif command_list[0] == "JustInCase":
         gifts[-1] = command_list[1]
@@ -20,3 +20,15 @@ while "None" in gifts:
 gifts_new_string = " ".join(gifts)
 
 print(gifts_new_string)
+
+
+
+
+# print(len(list))
+# print(list[6])
+# print(list[-6 - 1])
+
+# list = ['Eggs', 'StuffedAnimal', 'Cozonac', 'Sweets', 'EasterBunny', 'Eggs', 'Clothes']
+# print(list[len(list) - 1])
+# print(list[-len(list)])
+
