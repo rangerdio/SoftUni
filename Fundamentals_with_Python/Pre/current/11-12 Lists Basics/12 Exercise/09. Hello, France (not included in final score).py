@@ -35,3 +35,4 @@ if budged + new_budged >= TICKET:
     print("Hello, France!")
 else:
     print("Not enough money.")
+a
