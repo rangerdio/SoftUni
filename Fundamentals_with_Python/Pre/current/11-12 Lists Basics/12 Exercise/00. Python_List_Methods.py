@@ -20,6 +20,8 @@ print(num_list)
 print(str_list)
 
 
+
+
 """
 Method	        Description
 append()	    Adds an element at the end of the list
@@ -46,3 +48,7 @@ update()	    Updates the dictionary with the specified key-value pairs
 values()	    Returns a list of all the values in the dictionary
 
 """
+
+# Using Slice notation to remove char at position 3
+# using slice + concatenation
+# new_str = test_str[:2] + test_str[3:]
