@@ -18,9 +18,28 @@ while True:
             sub_list_exchange = sub_list_2 + sub_list_1
             my_list = sub_list_exchange.copy()
             print(my_list)
-    elif command_list[0] == "max":
+    elif command_list[0] == "max" or command_list[0] == "min":
+        even_list = []
+        odd_list = []
+        for element in my_list:
+            if element % 2 == 0:
+                even_list.append(element)
+                even_list.sort(reverse=True)
+            else:
+                odd_list.append(element)
+                odd_list.sort(reverse=True)
+        print(even_list)
+        print(odd_list)
+
         if command_list[1] == "even":
-            pass
+            if command_list[0] == "max":
+                print(even_list[0])
+            elif command_list[0] == "min":
+                print(even_list[-1])
+
         elif command_list[1] == "odd":
-            pass
+            if command_list[0] == "max":
+                print(odd_list[0])
+            elif command_list[0] == "min":
+                print(odd_list[-1])
 
