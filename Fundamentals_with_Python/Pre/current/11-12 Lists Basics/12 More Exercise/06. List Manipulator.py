@@ -139,13 +139,9 @@ while True:
                     print(last_evens)
                 elif len(last_evens) >= count:  # if hits are more than the count request , print the counted only
                     last_evens_limit_to_count = []
-                    # print(last_evens)       # be removed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    count_index = len(last_evens)
-                    while count_index > count:
-                        count_index -= 1
                     for index in range(len(last_evens) - count, len(last_evens)):
                         last_evens_limit_to_count.append(last_evens[index])
-                    print("result: ", last_evens_limit_to_count)
+                    print(last_evens_limit_to_count)
 
             elif type_command == "odd":
                 last_odds = []
@@ -158,5 +154,5 @@ while True:
                     last_odds_limit_to_count = []
                     for index in range(len(last_odds) - count, len(last_odds)):
                         last_odds_limit_to_count.append(last_odds[index])
-                    print("result: ", last_odds_limit_to_count)
+                    print(last_odds_limit_to_count)
 print(my_list)
