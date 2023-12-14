@@ -13,6 +13,7 @@ mix_list = [1, "AaA", "aaa", 1, "aaA", 5, "bbb", 2, "aAa", 6]
 # num_list.remove(8)
 # str_list.remove("bbb")
 # str_list.reverse()
+# num_list.reverse()
 # num_list.sort()
 # str_list.sort(reverse=True)
 
