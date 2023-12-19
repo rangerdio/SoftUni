@@ -8,7 +8,7 @@ def orders(order: str, quantity: int):
         price = 1.40
     elif order == "snacks":
         price = 2.00
-    return price * quantity
+    return f"{price * quantity:.2f}"
 
 
-print(f"{orders(input(), int(input())):.2f}")
+print(orders(input(), int(input())))
