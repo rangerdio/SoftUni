@@ -36,7 +36,7 @@ def division(a: float, b: float):
     print(f"result = {result}")
 
 
-# Program Design (Main Function)
+# Program Design (Main Functionn)
 def main():
     print("Python Calculator")
     menu = list("Menu: Addition Subtraction Multiplication Division Quit".split())
