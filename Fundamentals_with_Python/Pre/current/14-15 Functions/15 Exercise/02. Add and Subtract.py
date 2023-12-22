@@ -6,7 +6,7 @@ def subtract(num_1: int, num_3: int) -> int:
     return num_1 - num_3
 
 
-def add_and_subtract(num_1:int, num_2:int, num_3:int) -> int:
+def add_and_subtract(num_1: int, num_2: int, num_3: int) -> int:
     returned_result = sum_numbers(num_1, num_2)
     return subtract(returned_result, num_3)
 
