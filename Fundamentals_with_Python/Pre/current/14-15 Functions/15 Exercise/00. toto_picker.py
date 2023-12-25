@@ -1,5 +1,16 @@
-def toto(picks_, top_, columns):
-    return
+def toto(picks_, top_, col):
+    col_1 = []
+    col_2 = []
+    col_3 = []
+    col_4 = []
+    for i in range(1, top_ + 1):
+        col_1.append(i)
+        col_2.append(i)
+        col_3.append(i)
+        col_4.append(i)
+    print(f"{col_1}\n{col_2}\n{col_3}\n{col_4}")
+
+    return "Наслука!"
 
 
 def main():
@@ -36,10 +47,10 @@ def main():
             if not columns.isdigit():
                 continue
             elif int(columns) == 1:
-                print(f"\nВашият избор е {columns} колонкa на {menu[int(command)]}:\n")
+                print(f"\nВашият избор е {columns} колонкa за Игра {menu[int(command)]}:\n")
                 break
             elif 0 < int(columns) < 5:
-                print(f"\nВашият избор е {columns} колонки на {menu[int(command)]}:\n")
+                print(f"\nВашият избор е {columns} колонки за Игра {menu[int(command)]}:\n")
                 break
             else:
                 continue
@@ -49,16 +60,20 @@ def main():
     if not is_exit:
         # Function calling
         # input data is
-        if command == menu[1]:
+        picks = 0
+        top = 0
+        columns = int(columns)
+        command = int(command)
+        if command == menu.index("Тото 6/49"):
             picks = 6
             top = 49
-        elif command == menu[2]:
+        elif command == menu.index("Тото 6/42"):
             picks = 6
             top = 42
-        elif command == menu[3]:
+        elif command == menu.index("Тото 5/35"):
             picks = 5
             top = 35
-        print()
+        print(toto(picks, top, columns))
 
 
 
