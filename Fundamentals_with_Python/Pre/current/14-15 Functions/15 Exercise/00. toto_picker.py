@@ -1,12 +1,4 @@
-def toto_649():
-    return
-
-
-def toto_642():
-    return
-
-
-def toto_535():
+def toto(picks_, top_, columns):
     return
 
 
@@ -30,24 +22,44 @@ def main():
             print("Наслука!")
             break
         else:
-            if not command.isdigit():  # digit is numeric int value that is >= 0
+            if not command.isdigit():  # digit is numeric int value that is >= 00
                 print(f"\nВалидна опция е цифра в интервал [1,{len(menu) - 1}]!\n")
                 continue
             else:
-                command = int(command)
-                if len(menu) - 1 <= command:
+                if len(menu) - 1 <= int(command) or int(command) < 1:
                     print(f"\nИзбери валидна опция в интервал [1,{len(menu) - 1}] ")
                     continue
-                break  # test
+
+        #  Select columns quantity
+        while True:
+            columns = input("Изберере брой колонки в интервал [1, 4]: ")
+            if not columns.isdigit():
+                continue
+            elif int(columns) == 1:
+                print(f"\nВашият избор е {columns} колонкa на {menu[int(command)]}:\n")
+                break
+            elif 0 < int(columns) < 5:
+                print(f"\nВашият избор е {columns} колонки на {menu[int(command)]}:\n")
+                break
+            else:
+                continue
+
+        break  # test
 
     if not is_exit:
-        # Function Calling section
-        if command == 1:
-            toto_649()
-        elif command == 2:
-            toto_642()
-        elif command == 3:
-            toto_642()
+        # Function calling
+        # input data is
+        if command == menu[1]:
+            picks = 6
+            top = 49
+        elif command == menu[2]:
+            picks = 6
+            top = 42
+        elif command == menu[3]:
+            picks = 5
+            top = 35
+        print()
+
 
 
 if __name__ == "__main__":

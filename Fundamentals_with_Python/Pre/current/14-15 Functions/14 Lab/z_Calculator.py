@@ -60,7 +60,7 @@ def main():
                 continue
             else:
                 command_int = int(command)
-                if len(menu) - 1 <= command_int:
+                if len(menu) - 1 <= command_int or command_int < 1:
                     print(f"\nSelect valid Option from Menu, in range [1,{len(menu) - 1}] ")
                     continue
                 operation = menu[command_int]
