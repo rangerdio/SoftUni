@@ -39,23 +39,23 @@ def main():
                 print(f"{index}. {menu[index]}")
         print()
 
-        command = input(f"Избери опция в инвервал [1,{len(menu) - 1}] ")
+        command = input(f"Избери игра, в границата [1,{len(menu) - 1}] ")
         if command == str(len(menu) - 1):
             is_exit = True
             print("Наслука!")
             break
         else:
             if not command.isdigit():  # digit is numeric int value that is >= 00
-                print(f"\nВалидна опция е цифра в интервал [1,{len(menu) - 1}]!\n")
+                print(f"\nВалиден номер е цифра в границата [1,{len(menu) - 1}]!\n")
                 continue
             else:
                 if len(menu) - 1 <= int(command) or int(command) < 1:
-                    print(f"\nИзбери валидна опция в интервал [1,{len(menu) - 1}] ")
+                    print(f"\nИзбери валиден номер в границата [1,{len(menu) - 1}] ")
                     continue
 
         #  Select columns quantity
         while True:
-            columns = input("Изберере брой колонки в интервал [1, 4]: ")
+            columns = input("Избери брой колонки в границата [1, 4]: ")
             if not columns.isdigit():
                 continue
             elif int(columns) == 1:
