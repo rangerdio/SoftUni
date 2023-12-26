@@ -1,7 +1,8 @@
 import random
+from datetime import datetime
 
 
-def toto(picks_, top_, col):
+def toto(picks_: int, top_: int, col: int) -> str:
 
     #  For loop against the requested colons
     for col_num in range(1, col + 1):
@@ -21,6 +22,14 @@ def toto(picks_, top_, col):
         sorted_col_result_as_string_elements = [str(element) for element in sorted_col_result]
         sorted_col_result_string = ", ".join(sorted_col_result_as_string_elements)
         print(f"Колонка {col_num} =  {sorted_col_result_string}")
+
+        #  Append result to file
+        current_date_time = datetime.now()
+        formatted_date_time = current_date_time.strftime("%Y-%m-%d %H:%M:%S")
+
+        file_name = "bst_picker.log"
+        with open(file_name, 'a') as file:
+            file.write(f"[{formatted_date_time}]Колонка {col_num} =  {sorted_col_result_string}\n")
 
     return "Наслука!"
 
@@ -85,6 +94,13 @@ def main():
         elif command == menu.index("Тото 5/35"):
             picks = 5
             top = 35
+
+        current_date_time = datetime.now()
+        formatted_date_time = current_date_time.strftime("%Y-%m-%d %H:%M:%S")
+        file_name = "bst_picker.log"
+        with open(file_name, 'a') as file:
+            file.write(f"\n[{formatted_date_time}]Игра =  {menu[command]}\n")
+
         print(toto(picks, top, columns))
 
 
