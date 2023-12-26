@@ -1,14 +1,26 @@
+import random
+
+
 def toto(picks_, top_, col):
-    col_1 = []
-    col_2 = []
-    col_3 = []
-    col_4 = []
-    for i in range(1, top_ + 1):
-        col_1.append(i)
-        col_2.append(i)
-        col_3.append(i)
-        col_4.append(i)
-    print(f"{col_1}\n{col_2}\n{col_3}\n{col_4}")
+
+    #  For loop against the requested colons
+    for col_num in range(1, col + 1):
+
+        #  Reset Initial List
+        col_init = []
+        for i in range(1, top_ + 1):
+            col_init.append(i)
+
+        col_result = []
+        #  Start while loop for number of picks
+        while len(col_result) < picks_:
+            random_index_1 = random.randint(0, len(col_init) - 1)
+            col_result.append(col_init.pop(random_index_1))
+
+        sorted_col_result = sorted(col_result)
+        sorted_col_result_as_string_elements = [str(element) for element in sorted_col_result]
+        sorted_col_result_string = ", ".join(sorted_col_result_as_string_elements)
+        print(f"Колонка {col_num} =  {sorted_col_result_string}")
 
     return "Наслука!"
 
@@ -74,7 +86,6 @@ def main():
             picks = 5
             top = 35
         print(toto(picks, top, columns))
-
 
 
 if __name__ == "__main__":
