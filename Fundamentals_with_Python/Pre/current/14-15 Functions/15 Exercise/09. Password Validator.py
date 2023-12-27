@@ -23,8 +23,7 @@ def validator(pass_):
     else:
         is_valid_3 = True
     if is_valid_1 and is_valid_2 and is_valid_3:
-        print("Password is valid")
-    return
+        return "Password is valid"
 
 
 password = input()
