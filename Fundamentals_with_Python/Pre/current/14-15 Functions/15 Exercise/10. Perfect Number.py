@@ -1,1 +1,1 @@
-number =
+number = int(input())
