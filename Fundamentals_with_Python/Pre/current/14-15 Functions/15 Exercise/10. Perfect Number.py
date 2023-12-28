@@ -1,3 +1,4 @@
 
 
+
 number = int(input())
