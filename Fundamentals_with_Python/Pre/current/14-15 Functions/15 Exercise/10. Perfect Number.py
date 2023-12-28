@@ -1,4 +1,4 @@
-def perfect_number(num:int)
+def perfect_number(num:int):
 
 
 number = int(input())
