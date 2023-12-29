@@ -1,4 +1,4 @@
-def loading_bar(number:int):
+def loading_bar(number: int):
     return
 
 
