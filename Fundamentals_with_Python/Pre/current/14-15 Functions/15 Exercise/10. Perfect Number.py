@@ -1,6 +1,7 @@
 def perfect_number(num: int):
     divisors = []
-    for i in range()
+    for i in range(1, num):
+
     return
 
 
