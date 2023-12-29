@@ -1,0 +1,1 @@
+number_int = int(input())
