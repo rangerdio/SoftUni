@@ -3,7 +3,10 @@ def perfect_number(num: int):
     for i in range(1, num):
         if num % i == 0:
             divisors_sum += i
-    return divisors_sum
+    if divisors_sum == num:
+        return "We have a perfect number!"
+    else:
+        return "It's not so perfect."
 
 
 number = int(input())
