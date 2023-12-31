@@ -1,7 +1,7 @@
 def loading_bar(number: int):
     complete = (number // 10) * "%"
     incomplete = (10 - number // 10) * "."
-    return
+    return f"{number}% [{complete}{incomplete}]"
 
 
 number_int = int(input())
