@@ -1,4 +1,5 @@
 def loading_bar(number: int):
+
     return
 
 
