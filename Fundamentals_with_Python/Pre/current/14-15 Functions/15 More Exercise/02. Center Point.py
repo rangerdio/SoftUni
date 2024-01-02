@@ -3,7 +3,11 @@ from cmath import sqrt
 
 def center_point(x1: float, y1: float, x2: float, y2: float):
     c1 = sqrt(abs(x1) ** 2 + abs(y1) ** 2)
-    return
+    c2 = sqrt(abs(x2) ** 2 + abs(y2) ** 2)
+    if c1 >= c2:
+        return f"({x1}, {y1}"
+    else:
+        return f"({x2}, {y2}"
 
 
 x_1 = float(input())
