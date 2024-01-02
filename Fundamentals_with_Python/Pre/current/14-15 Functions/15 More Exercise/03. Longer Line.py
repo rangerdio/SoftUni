@@ -28,7 +28,7 @@ def longer_line(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float
             )
         else:
             return (
-                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
                 f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
             )
     else:
@@ -44,7 +44,7 @@ def longer_line(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float
             )
         else:
             return (
-                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
                 f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
             )
 
