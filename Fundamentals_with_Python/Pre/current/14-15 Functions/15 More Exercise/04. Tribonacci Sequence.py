@@ -1,6 +1,6 @@
-def get_tribonachi(quantity: int):
+def get_sequence(quantity: int):
     return
 
 
 number = int(input())
-print(get_tribonachi(number))
+print(get_sequence(number))
