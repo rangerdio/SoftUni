@@ -1,13 +1,13 @@
-from math import sqrt
+import math
 
 
 def center_point(x1: float, y1: float, x2: float, y2: float):
-    c1 = sqrt(abs(x1) ** 2 + abs(y1) ** 2)
-    c2 = sqrt(abs(x2) ** 2 + abs(y2) ** 2)
+    c1 = math.sqrt(abs(x1) ** 2 + abs(y1) ** 2)
+    c2 = math.sqrt(abs(x2) ** 2 + abs(y2) ** 2)
     if c1 <= c2:
-        return f"({int(x1)}, {int(y1)})"
+        return f"({math.floor(x1)}, {math.floor(y1)})"
     else:
-        return f"({int(x2)}, {int(y2)})"
+        return f"({math.floor(x2)}, {math.floor(y2)})"
 
 
 x_1 = float(input())
