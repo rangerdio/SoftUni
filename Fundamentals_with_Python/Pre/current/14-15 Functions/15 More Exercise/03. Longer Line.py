@@ -22,9 +22,15 @@ def longer_line(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float
         winner_line_x2 = x2
         winner_line_y2 = y2
         if point_1_closer(winner_line_x1, winner_line_y1, winner_line_x2, winner_line_y2):
-            return f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
+            return (
+                f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
+            )
         else:
-            return f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+            return (
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+            )
     else:
         # print("line_2 winner")
         winner_line_x1 = x3
@@ -32,9 +38,15 @@ def longer_line(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float
         winner_line_x2 = x4
         winner_line_y2 = y4
         if point_1_closer(winner_line_x1, winner_line_y1, winner_line_x2, winner_line_y2):
-            return f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
+            return (
+                f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})"
+            )
         else:
-            return f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y2)})({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+            return (
+                f"({math.floor(winner_line_x2)}, {math.floor(winner_line_y1)})"
+                f"({math.floor(winner_line_x1)}, {math.floor(winner_line_y1)})"
+            )
 
 
 # x_1 = 1
