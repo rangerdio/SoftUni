@@ -1,4 +1,8 @@
+from cmath import sqrt
+
+
 def center_point(x1: float, y1: float, x2: float, y2: float):
+    c1 = sqrt(abs(x1) ** 2 + abs(y1) ** 2)
     return
 
 
