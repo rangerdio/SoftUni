@@ -1,4 +1,4 @@
-def binary_digit_count(decemical_number: int, binary_num: int):
+def binary_digit_count(decemical_number: int, binary_digit: int):
     counter = 0
     bin_num = []
     while True:
@@ -9,11 +9,11 @@ def binary_digit_count(decemical_number: int, binary_num: int):
             return counter
         remainder = decemical_number % 2
         bin_num.append(str(remainder))
-        if remainder == binary_num:
+        if remainder == binary_digit:
             counter += 1
         decemical_number //= 2
 
 
 number = int(input())
-binary = int(input())
-print(binary_digit_count(number, binary))
+bin_digit = int(input())
+print(binary_digit_count(number, bin_digit))
