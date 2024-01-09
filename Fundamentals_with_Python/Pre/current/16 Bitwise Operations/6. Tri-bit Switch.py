@@ -14,4 +14,9 @@ def pos_int_to_binary(decemical_number: int):
 
 number, target_position = 1234, 7
 # number, target_position = int(input()), int(input())
+new_number_7_111_as_mask = 7 << target_position
+
 print(pos_int_to_binary(number))
+print(pos_int_to_binary(new_number_7_111_as_mask))
+result = new_number_7_111_as_mask ^ target_position
+print(result)
