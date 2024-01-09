@@ -20,3 +20,4 @@ print(pos_int_to_binary(number))
 print(pos_int_to_binary(new_number_7_111_as_mask))
 result = new_number_7_111_as_mask ^ target_position
 print(result)
+# not working
