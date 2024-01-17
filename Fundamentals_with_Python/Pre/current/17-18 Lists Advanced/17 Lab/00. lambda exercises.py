@@ -39,4 +39,9 @@
 # print(check_even_odd(6))
 # print(check_even_odd(7))
 
+# num = [1, 2, 3]
+# sq = [x ** 2 for x in num if x > 1]
+# print(sq)
+
+print([num for num in range(11) if num % 2 == 0])
 
