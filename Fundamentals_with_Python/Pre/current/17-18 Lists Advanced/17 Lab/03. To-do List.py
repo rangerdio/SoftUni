@@ -10,7 +10,6 @@ while True:
     # print(todo_list)
 
 cnt = sum(1 for element in todo_list if element == 0)
-for remove in range(3)
-    if element == 0:
-        todo_list.pop(index)
+while 0 in todo_list:
+    todo_list.remove(0)
 print(todo_list)
