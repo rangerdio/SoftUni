@@ -1,7 +1,6 @@
 # train = [0] * int(input())
-wagons = int(input())
 train = []
-train.extend(0 for element in range(wagons))
+train.extend(0 for element in range(int(input())))
 
 while True:
     command = input()
