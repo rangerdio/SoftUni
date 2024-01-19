@@ -9,4 +9,4 @@ while True:
 # while 0 in todo_list:
 #     todo_list.remove(0)
 result = [element for element in todo_list if element != 0]
-print(todo_list)
+print(result)
