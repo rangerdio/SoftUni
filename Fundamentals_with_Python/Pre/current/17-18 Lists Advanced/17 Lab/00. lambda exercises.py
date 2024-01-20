@@ -45,4 +45,6 @@
 
 # print([num for num in range(11) if num % 2 == 0])
 
+
+name_list = ["asd", "koko", "ivanvosd"]
 sorted_name_list = sorted(name_list, key=lambda x: (-len(x), x))
