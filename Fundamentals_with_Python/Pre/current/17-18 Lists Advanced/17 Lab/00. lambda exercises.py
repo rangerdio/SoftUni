@@ -43,6 +43,6 @@
 # sq = [x ** 2 for x in num if x > 1]
 # print(sq)
 
-print([num for num in range(11) if num % 2 == 0])
+# print([num for num in range(11) if num % 2 == 0])
 
-
+sorted_name_list = sorted(name_list, key=lambda x: (-len(x), x))
