@@ -2,7 +2,6 @@
 # improvement_factor = int(input())
 #
 # happiness_list_factored = [element * improvement_factor for element in happiness_list if element / element == 1]
-# # print(happiness_list_factored)
 # average = 0
 #
 # for element in happiness_list_factored:
