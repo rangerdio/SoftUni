@@ -19,4 +19,7 @@ happyness_list = input().split(" ")
 happyness_factor = int(input())
 
 happyness_factored = list(map(lambda x: int(x) * happyness_factor, happyness_list))
-print(happyness_factored)
+
+above_average = list(filter(lambda x: x >= sum(happyness_factored) / len(happyness_factored), happyness_factored))
+
+print(above_average)
