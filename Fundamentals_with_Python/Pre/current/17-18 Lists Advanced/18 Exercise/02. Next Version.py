@@ -1,5 +1,4 @@
-ver = "3.9.9"
-version = list(map(int, ver.split(".")))
+version = list(map(int, input().split(".")))
 version[len(version) - 1] += 1
 for index in range(-1, -len(version), -1):
     if version[index] == 10:
