@@ -1,6 +1,12 @@
 def merge_(words_, command):
-    for s in range(command[1], )
-    return "asd"
+    new_words_string = ""
+    for index in range(len(words_)):
+        if int(command[1]) <= index <= int(command[2]):
+            new_words_string += words_[index]
+        else:
+            word_mod = " " + words_[index] + " "
+            new_words_string += word_mod
+    return new_words_string.split()
 
 
 def divide_(words_, command):
