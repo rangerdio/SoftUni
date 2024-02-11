@@ -1,19 +1,22 @@
 def filter_positive(numbers_):
-    return print(1)
+    positives = [number for number in numbers_ if int(number) >= 0]
+    return print(f'Positive: {", ".join(positives)}')
 
 
 def filter_negative(numbers_):
-    return print(2)
+    negatives = [number for number in numbers_ if int(number) < 0]
+    return print(f'Negative: {", ".join(negatives)}')
 
 
 def filter_even(numbers_):
-    return print(3)
+    evens = [number for number in numbers_ if int(number) % 2 == 0]
+    return print(f'Even: {", ".join(evens)}')
 
 
 def filter_odd(numbers_):
-    return print(4)
+    odds = [number for number in numbers_ if int(number) % 2 != 0]
+    return print(f'Odd: {", ".join(odds)}')
 
 
-some_string = "1, -2, 0, 5, 3, 4, -100, -20, 12, 19, -33"
-numbers = some_string.split(", ")
+numbers = input().split(", ")
 filter_positive(numbers), filter_negative(numbers), filter_even(numbers), filter_odd(numbers)
