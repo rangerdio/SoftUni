@@ -1,9 +1,14 @@
 def merge_(words_, command):
-    new_words = []
+    new_words_string = ""
     for index in range(len(words_)):
-        if command[1] < index < command[2] + 1:
+        if int(command[1]) <= index <= int(command[2]):
+            new_words_string += words_[index]
+        else:
+            word_mod = " " + words_[index] + " "
+            new_words_string += word_mod
+            print(new_words_string)
 
-    return "asd"
+    return new_words_string.split()
 
 
 string = "Ivo Johny Tony Bony Mony"
