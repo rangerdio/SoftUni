@@ -1,22 +1,26 @@
 def merge_(words_, command):
-    range_upper = int(command[2])
+    start_index = int(command[1])
+    end_index = int(command[2])
 
-    if int(command[1]) >= len(words_) - 1:
+    if start_index >= len(words_) - 1:
         return words_
-    elif int(command[2]) >= len(words_) + 2 > int(command[1]):
-        range_upper = len(words_)
+    elif int(command[2]) >= len(words_) + 2 > start_index:
+        end_index = len(words_)
 
     new_words_string = ""
     for index in range(len(words_)):
-        if int(command[1]) <= index <= range_upper:
+        if start_index <= index <= end_index:
             new_words_string += words_[index]
         else:
-            word_mod = " " + words_[index] + " "
+            word_mod = "  " + words_[index] + "  "
             new_words_string += word_mod
+    #print(f"test before split: {new_words_string}")
     return new_words_string.split()
 
 
 def divide_(words_, command):
+    start_index = int(command[1])
+    partitions = int(command[2])
     return "asd"
 
 
@@ -32,4 +36,4 @@ while True:
     elif current_cmd_list[0] == "divide":
         words = merge_(words, current_cmd_list)
 
-print("".join(words))
+print(" ".join(words))
