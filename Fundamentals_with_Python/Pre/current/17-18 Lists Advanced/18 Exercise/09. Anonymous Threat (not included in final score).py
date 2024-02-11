@@ -41,12 +41,8 @@ def dividing_word(word: str, partitions_: int):
         second_part = ""
         first_part = ""
 
-        for index in range(len(word)):
+        for index in range(len(word) - magic_lenght - 1):
             counter += 1
-
-            if counter2 == partitions_up_to:
-                second_part = word[-magic_lenght - 1:]
-                print(f"3.3) second part of dividing word {second_part}")
 
             if counter <= magic_lenght:
                 first_part += word[index]
@@ -55,20 +51,23 @@ def dividing_word(word: str, partitions_: int):
                 first_part += word[index]
                 counter = 1
                 counter2 += 1
-        print(f"3.3 first part of dividing string {first_part}")
-        new_word_string = first_part + second_part
-        print(new_word_string)
-    return new_word_string
+        # print(f"3.3 first part of dividing string: {first_part}")
+        second_part = word[-magic_lenght - 1:]
+        # print(f"3.3) second part of dividing word: {second_part}")
+        new_word_string = first_part + "  " + second_part
+        # print(new_word_string)
+
+    return new_word_string.split("  ")
 
 
 def divide_(words_: list, command: list):
     divide_index_number = int(command[1])
     partitions = int(command[2])
     divide_word = words_[divide_index_number]
-    print(f"1) inside divide_ word to be divided: {divide_word}")
+    # print(f"1) inside divide_ word to be divided: {divide_word}")
     divided_string_list = dividing_word(divide_word, partitions)
     # print(divided_string_list)
-    # print(f"4) inside divide, after dividing_word, the divided string: {divided_string}")
+    # print(f"4) inside divide, after dividing_word, the divided string: {divided_string_list}")
     divide_result = words_[:divide_index_number] + divided_string_list
     # print(divide_result)
     return divide_result
@@ -87,7 +86,7 @@ while True:
         # print(f' after merge {" ".join(words)}')
     elif current_cmd_list[0] == "divide":
         words = divide_(words, current_cmd_list)
-        print(words)
-        print(f'after divide: {" ".join(words)}')
+        # print(words)
+        # print(f'after divide: {" ".join(words)}')
 
 print(" ".join(words))
