@@ -11,7 +11,7 @@ def ascii_change(word_: str):
 
 
 def switch_index(word_: str):
-    if len(word_) != 2:
+    if len(word_) > 2:
         return word_[0] + word_[-1] + word_[2:-1] + word_[1]
     else:
         return word_
