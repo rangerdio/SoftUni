@@ -20,7 +20,7 @@ def divide_(words_, command):
     return "asd"
 
 
-string = "Ivo Johny Tony Bony Mony"
+string = "abcd efgh ijkl mnop qrst uvwx yz"
 words = string.split()
 while True:
     current_cmd = input()
