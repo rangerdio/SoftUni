@@ -1,4 +1,7 @@
-def merge_(words_: list, command: list):
+def merge_(words_, command):
+    new_words = []
+    for index in range(len(words_)):
+        if command[1] < index < command[2] + 1:
 
     return "asd"
 
@@ -6,13 +9,7 @@ def merge_(words_: list, command: list):
 string = "Ivo Johny Tony Bony Mony"
 words = string.split()
 print(words)
-while True:
-    current_cmd = input()
-    current_cmd_list = current_cmd.split()
-    print(current_cmd_list)
-    if current_cmd == "3:1":
-        break
-    elif current_cmd[0] == "merge":
-        words = merge_(words, current_cmd_list)
-    elif current_cmd[0] == "divide":
-        words = merge_(words, current_cmd_list)
+current_cmd_list = ["merge", "0", "3"]
+words = merge_(words, current_cmd_list)
+print(words)
+print(current_cmd_list)

@@ -1,4 +1,5 @@
 def merge_(words_, command):
+    for s in range(command[1], )
     return "asd"
 
 
