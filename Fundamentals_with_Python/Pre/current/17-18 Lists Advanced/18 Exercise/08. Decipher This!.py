@@ -1,4 +1,4 @@
-def ascii_change(word_: str):
+def int_to_char(word_: str):
     char = ""
     str_ = ""
     for letter in word_:
@@ -18,7 +18,7 @@ def switch_index(word_: str):
 
 
 secret_message = input().split()
-secret_m_ascii = [ascii_change(word) for word in secret_message]
-secret_m_switch = [switch_index(word) for word in secret_m_ascii]
+secret_message_ascii_switch = [int_to_char(word) for word in secret_message]
+secret_message_index_switch = [switch_index(word) for word in secret_message_ascii_switch]
 
-print(" ".join(secret_m_switch))
+print(" ".join(secret_message_index_switch))
