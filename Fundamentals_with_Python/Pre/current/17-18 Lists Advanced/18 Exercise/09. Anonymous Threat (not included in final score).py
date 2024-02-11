@@ -1,8 +1,8 @@
-def merge_(words_):
+def merge_(words_, command):
     return "asd"
 
 
-def divide_(words_):
+def divide_(words_, command):
     return "asd"
 
 
@@ -14,6 +14,6 @@ while True:
     if current_cmd == "3:1":
         break
     elif current_cmd[0] == "merge":
-        words = merge_(words)
+        words = merge_(words, current_cmd_list)
     elif current_cmd[0] == "divide":
-        words = merge_(words)
+        words = merge_(words, current_cmd_list)
