@@ -17,8 +17,8 @@ mix_list = [1, "AaA", "aaa", 1, "aaA", 5, "bbb", 2, "aAa", 6]
 # num_list.sort()
 # str_list.sort(reverse=True)
 
-print(num_list)
-print(str_list)
+# print(num_list)
+# print(str_list)
 
 
 
@@ -52,4 +52,11 @@ values()	    Returns a list of all the values in the dictionary
 
 # Using Slice notation to remove char at position 3
 # using slice + concatenation
+
+# test_str = "Holle"
 # new_str = test_str[:2] + test_str[3:]
+# print(new_str)
+
+# test_str = "Holle"
+# new_str = test_str[0] + test_str[-1] + test_str[2:-1] + test_str[1]
+# print(new_str)
