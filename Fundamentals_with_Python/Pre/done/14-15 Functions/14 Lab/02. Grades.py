@@ -1,5 +1,5 @@
 def grade(number: float):
-    if 2.00 <= number < 2.99:
+    if 2.00 <= number <= 2.99:
         return "Fail"
     elif 3.00 <= number < 3.49:
         return "Poor"
