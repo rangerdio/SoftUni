@@ -1,5 +1,4 @@
 def counter_strike(energy: int):
-    target_energy_distance = 0
     win_counter = 0
 
     while True:
