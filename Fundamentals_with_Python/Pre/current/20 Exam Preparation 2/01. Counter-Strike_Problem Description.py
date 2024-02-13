@@ -13,20 +13,20 @@ while energy > 0:
     if energy > target_energy_distance:
         win_counter += 1
         energy -= target_energy_distance
-        if win_counter % 3 == 0:
+        if 0 != win_counter % 3 == 0:
             energy += win_counter
-        print(f"--- Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
+        # print(f"--- Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
     elif energy == target_energy_distance:
         energy -= target_energy_distance
         win_counter += 1
-        if win_counter % 3 == 0:
+        if 0 != win_counter % 3 == 0:
             energy += win_counter
-        print(f"--- Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
+        # print(f"--- Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
         lost = True
         break
     elif energy < target_energy_distance:
         lost = True
-        print(f"--- LOST  Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
+        # print(f"--- LOST  Target distance {target_energy_distance} ; counter: {win_counter};  Current Energy: {energy}")
         break
 if lost:
     print(f"Not enough energy! Game ends with {win_counter} won battles and {energy} energy")
