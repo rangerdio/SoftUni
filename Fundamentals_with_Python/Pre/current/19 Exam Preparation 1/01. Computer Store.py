@@ -1,33 +1,36 @@
 def taxes(cmd: str, price_total: float):
-    if total_price == 0:
-        return "Invalid order!"
+    if price_total == 0:
+        print("Invalid order!")
+        return
+
     if command == "special":
-        tax = total_price * 20 / 100
-        discount = (tax + total_price) * 0.9
+        tax = price_total * 20 / 100
+        taxed = total_price + tax
+        discount = taxed * 0.1
     else:
-        tax = total_price * 20 / 100
-    return [total_price, tax, total_price + tax]
+        tax = price_total * 20 / 100
+        taxed = total_price + tax
+        discount = 0
+
+    after_tax_and_discount = taxed - discount
+    return [price_total, tax, after_tax_and_discount]
 
 
-def calculate_price(price: float):
-    if price > 0:   # may be = as well
-        price += price
-    else:
-        print("Invalid price!")
-    return price
-
-
-# tax = 0
 total_price = 0
 while True:
     command = input()
     if command == "special" or command == "regular":
         result = taxes(command, total_price)
         break
-    total_price += calculate_price(float(command))
+    current_price = float(command)
+    if current_price > 0:   # may be = as well
+        total_price += current_price
+    else:
+        print("Invalid price!")
 
-print("Congratulations you've just bought a new computer!")
-print(f"Price without taxes: {result[0]:.2f}$")
-print(f"Taxes: {result[1]:.2f}$")
-print("-----------")
-print(f"Total price: {result[2]:.2f}$")
+if result:
+    print("Congratulations you've just bought a new computer!")
+    print(f"Price without taxes: {result[0]:.2f}$")
+    print(f"Taxes: {result[1]:.2f}$")
+    print("-----------")
+    print(f"Total price: {result[2]:.2f}$")
