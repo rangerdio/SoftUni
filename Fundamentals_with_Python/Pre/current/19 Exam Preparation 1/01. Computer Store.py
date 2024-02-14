@@ -1,9 +1,6 @@
 def taxes(cmd: str, price_total: float):
-    if price_total == 0:
-        print("Invalid order!")
-        return
 
-    if command == "special":
+    if cmd == "special":
         tax = price_total * 20 / 100
         taxed = total_price + tax
         discount = taxed * 0.1
@@ -20,7 +17,7 @@ total_price = 0
 while True:
     command = input()
     if command == "special" or command == "regular":
-        result = taxes(command, total_price)
+        result = taxes(command, total_price) if total_price != 0 else print("Invalid order!")
         break
     current_price = float(command)
     if current_price > 0:   # may be = as well
