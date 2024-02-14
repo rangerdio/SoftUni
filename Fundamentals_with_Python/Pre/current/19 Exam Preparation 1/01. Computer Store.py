@@ -20,7 +20,7 @@ while True:
         result = taxes(command, total_price) if total_price != 0 else print("Invalid order!")
         break
     current_price = float(command)
-    if current_price > 0:   # may be = as well
+    if current_price > 0:
         total_price += current_price
     else:
         print("Invalid price!")
