@@ -1,11 +1,9 @@
 def shooting(targets: list, index_hit: int, successful_hit_count: int):
-
-    if index_hit >= len(targets):
+    if index_hit >= len(targets) or index_hit <= -len(targets) - 1:
         return [targets, successful_hit_count]
 
     if targets[index_hit] != -1:
         successful_hit_count += 1
-
         new = int(targets[index_hit])
         for index, element in enumerate(targets):
             if index == index_hit:
@@ -21,14 +19,15 @@ def shooting(targets: list, index_hit: int, successful_hit_count: int):
 hit_counter = 0
 target_list = list(map(int, input().split()))
 
-
 while True:
     command = input()
     if command == "End":
+        # print(target_list)
         target_list = " ".join(target_list)
         print(f"Shot targets: {current_shoot_result[1]} -> {target_list}")
         break
     shooting_index = int(command)
     current_shoot_result = shooting(target_list, shooting_index, hit_counter)
     target_list = current_shoot_result[0]
+    # print(target_list)
     hit_counter = current_shoot_result[1]
