@@ -1,3 +1,4 @@
+
 total_days_pirating = int(input())
 daily_plunder = int(input())
 expected_plunder = float(input())
@@ -10,6 +11,7 @@ while current_day <= total_days_pirating:
     if current_day % 5 == 0:
         total_plunder *= 0.7
     current_day += 1
+
 if total_plunder >= expected_plunder:
     print(f"Ahoy! {total_plunder:.2f} plunder gained.")
 else:
