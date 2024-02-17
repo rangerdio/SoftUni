@@ -9,7 +9,7 @@ def student_score(number_of_lectures_, additional_bonus_, student_attendances_):
 number_of_students, number_of_lectures, additional_bonus = int(input()), int(input()), int(input())
 results = []
 attendances = []
-for s in range(number_of_students):
+for _ in range(number_of_students):
     student_attendances = int(input())
     student_attendances = number_of_lectures if student_attendances > number_of_lectures else student_attendances
     results.append(student_score(number_of_lectures, additional_bonus, student_attendances))
