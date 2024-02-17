@@ -22,7 +22,7 @@ def lift_cabin(queue: int, lift: list):
 
     if is_full and not is_no_man:
         lift_str = [str(element) for element in lift]
-        print(f"There isn't enough space! {queue - mark + 1} people in a queue!")
+        print(f"There isn't enough space! {queue - mark + 1} people in a queue!")   # the one here if removed opposite the results in judge
         print(f'{" ".join(lift_str)}')
     elif is_no_man and not is_full:
         lift_str = [str(element) for element in lift]
