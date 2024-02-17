@@ -20,8 +20,8 @@ max_bonus_index = results.index(max(results))
 print(f"Max Bonus: {math.ceil(max_bonus)}.")
 print(f"The student has attended {attendances[max_bonus_index]} lectures.")
 
-import sys
-import math
+# import sys
+# import math
 # max_result = -sys.float_info.max
 # max_result_attendances = 0
 # number_of_students, number_of_lectures, additional_bonus = int(input()), int(input()), int(input())
