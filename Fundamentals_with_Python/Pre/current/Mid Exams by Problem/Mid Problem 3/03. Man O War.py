@@ -34,7 +34,10 @@ def repairing(pirate_ship: list, warship: list, index: int, health: int, max_hea
 
 
 def status(pirate_ship: list, warship: list, max_health: int):
-    return
+    barer = 20 / 100 * max_health
+
+    unhealthy = [element for element in pirate_ship if element < barer]
+    return len(unhealthy)
 
 
 pirate_ship_status = input().split(">")
