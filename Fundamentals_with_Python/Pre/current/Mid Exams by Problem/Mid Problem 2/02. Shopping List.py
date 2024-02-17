@@ -28,7 +28,6 @@ groceries_list = input().split("!")
 while True:
     command = input()
     if command == "Go Shopping!":
-        print(", ".join(groceries_list))
         break
     else:
         command_list = command.split()
@@ -48,3 +47,5 @@ while True:
         elif command_list[0] == "Rearrange":
             groceries_list_result = rearrange(groceries_list, command_list[1])
             groceries_list = groceries_list_result
+
+print(", ".join(groceries_list))
