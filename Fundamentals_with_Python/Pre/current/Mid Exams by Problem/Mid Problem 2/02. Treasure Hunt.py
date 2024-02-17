@@ -6,8 +6,9 @@ def loot(treasure: list, cmd: list):
 
 
 def drop(treasure: list, cmd: list):
-    cmd = int(cmd[0])
-    treasure.append(treasure.pop(cmd))
+    index = int(cmd[0])
+    if 0 <= index < len(treasure):
+        treasure.append(treasure.pop(index))
     return treasure
 
 
