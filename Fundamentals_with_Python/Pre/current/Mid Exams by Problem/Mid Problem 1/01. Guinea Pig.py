@@ -12,8 +12,7 @@ food, hay_bought, cover, puppy_weight = float(input()), float(input()), float(in
 
 for day in range(1, 31):
     current_day_result = daily_calculation(food, hay_bought, cover, puppy_weight, day)
-    food, hay_bought, cover, puppy_weight = current_day_result[0], current_day_result[1], \
-        current_day_result[2], current_day_result[3]
+    food, hay_bought, cover = current_day_result[0], current_day_result[1], current_day_result[2]
     if food <= 0 or hay_bought <= 0 or cover <= 0:
         to_store = True
         break
@@ -21,4 +20,4 @@ for day in range(1, 31):
 if to_store:
     print("Merry must go to the pet store!")
 else:
-    print(f"Everything is fine! Puppy is happy! Food: {food}, Hay: {hay_bought}, Cover: {cover}.")
+    print(f"Everything is fine! Puppy is happy! Food: {food:.2f}, Hay: {hay_bought:.2f}, Cover: {cover:.2f}.")
