@@ -1,13 +1,9 @@
 def shooting(targets: list, index_hit: int, successful_hit_count: int):
-
     if index_hit >= len(targets) or index_hit <= -len(targets) - 1:
-        # asd = [str(element) for element in targets]
-        # print([str(element) for element in targets])
         return [targets, successful_hit_count]
 
     if targets[index_hit] != -1:
         successful_hit_count += 1
-
         new = int(targets[index_hit])
         for index, element in enumerate(targets):
             if index == index_hit:
