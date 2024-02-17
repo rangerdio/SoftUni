@@ -23,7 +23,6 @@ def search(pool: list, idx_1: int, idx_2: int, current_attempt: int):
 
 
 sequence_list = input().split()
-print(sequence_list)
 attempts = 0
 
 while True:
@@ -36,9 +35,6 @@ while True:
     index_2 = int(command.split()[1])
     result = search(sequence_list, index_1, index_2, attempts)
     sequence_list = result[0]
-
-    print(sequence_list)
-
     attempts = result[1]
     if not sequence_list:
         print(f"You have won in {attempts} turns!")
