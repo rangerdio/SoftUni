@@ -4,7 +4,7 @@ def search(pool: list, idx_1: int, idx_2: int, current_attempt: int):
     for _ in range(len(pool)):
         valid_list.append(_)
 
-    if (idx_1 == idx_2) or (idx_1 not in valid_list and idx_2 not in pool):
+    if (idx_1 == idx_2) or (idx_1 not in valid_list) or (idx_2 not in valid_list):
         print("Invalid input! Adding additional elements to the board")
         item_to_insert = "-" + str(current_attempt) + "a"
         insert_index = len(pool) // 2
@@ -31,11 +31,10 @@ while True:
         print("Sorry you lose :(")
         print(f"{' '.join(sequence_list)}")
         break
-    index_1 = int(command.split()[0])
-    index_2 = int(command.split()[1])
+    index_1, index_2 = map(int, command.split())
     result = search(sequence_list, index_1, index_2, attempts)
-    sequence_list = result[0]
-    attempts = result[1]
+    sequence_list, attempts = result
+
     if not sequence_list:
         print(f"You have won in {attempts} turns!")
         break
