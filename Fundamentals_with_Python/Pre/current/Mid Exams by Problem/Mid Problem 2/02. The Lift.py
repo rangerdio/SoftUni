@@ -9,18 +9,20 @@ def lift_cabin(queue: int, lift: list):
             is_full = True
             mark = man
             break
-        for cabin in lift:
-            if cabin == 4:
+
+        for i in range(len(lift)):
+            if lift[i] == 4:
                 continue
             else:
-                cabin += 1
+                lift[i] += 1
                 break
+
         if man == queue:
             is_no_man = True
 
     if is_full and not is_no_man:
         lift_str = [str(element) for element in lift]
-        print(f"There isn't enough space! {queue - mark} people in a queue!")
+        print(f"There isn't enough space! {queue - mark + 1} people in a queue!")
         print(f'{" ".join(lift_str)}')
     elif is_no_man and not is_full:
         lift_str = [str(element) for element in lift]
