@@ -17,13 +17,12 @@ def shoot_manipulation(targets: list, index: int, value: int):
 
 
 def add_manipulation(targets: list, index: int, value: int):
-    new_element = targets[index]
-    targets.insert(index, new_element)
+    targets.insert(index, value)
     return targets
 
 
 def strike_manipulation(targets: list, index: int, value: int):
-    targets = targets[:index - 1:] + targets[index + value + 1:]
+    targets = targets[:index - value:] + targets[index + value + 1:]
     return targets
 
 
@@ -50,8 +49,8 @@ while True:
             result_list = target_list
 
     elif command_list[0] == "Strike":
-        if idx_validation(target_list, int(command_list[1])) and idx_validation(target_list, int(command_list[1]) - 1)\
-                and idx_validation(target_list, int(command_list[1]) + 1):
+        if idx_validation(target_list, int(command_list[1]) - int(command_list[2])) and \
+                idx_validation(target_list, int(command_list[1]) + int(command_list[2])):
             result_list = strike_manipulation(target_list, int(command_list[1]), int(command_list[2]))
         else:
             print("Strike missed!")
