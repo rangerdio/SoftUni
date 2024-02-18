@@ -1,4 +1,4 @@
-def index_validation(data_list: list, index: int):
+def idx_validation(data_list: list, index: int):
     valid_list = []
     for _ in range(len(data_list)):
         valid_list.append(_)
@@ -9,50 +9,50 @@ def index_validation(data_list: list, index: int):
 
 
 def shoot_manipulation(targets: list, index: int, value: int):
-    if index_validation(targets, index):
-        pass
-
-    return "123"
+    targets[index] -= value
+    if targets[index] <= 0:
+        element_to_remove = targets[index]
+        targets.remove(element_to_remove)
+    return targets
 
 
 def add_manipulation(targets: list, index: int, value: int):
-    if index_validation(targets, index):
-        pass
-
-    return "123"
+    new_element = targets[index]
+    targets.insert(index, new_element)
+    return targets
 
 
 def strike_manipulation(targets: list, index: int, value: int):
-    if index_validation(targets, index):
-        pass
-
-    return "123"
+    targets = targets[:index - 1:] + targets[index + value + 1:]
+    return targets
 
 
-target_list = input().split()
+target_list = list(map(int, input().split()))
 result_list = []
 while True:
     command = input()
     if command == "End":
-        print(f'{" ".join(target_list)}')
+        result = [str(element) for element in target_list]
+        print(f'{"|".join(result)}')
         break
     command_list = command.split()
     if command_list[0] == "Shoot":
-        if index_validation(target_list, int(command_list[1])):
+        if idx_validation(target_list, int(command_list[1])):
             result_list = shoot_manipulation(target_list, int(command_list[1]), int(command_list[2]))
         else:
             result_list = target_list
 
     elif command_list[0] == "Add":
-        if index_validation(target_list, int(command_list[1])):
-            result_list = shoot_manipulation(target_list, int(command_list[1]), int(command_list[2]))
+        if idx_validation(target_list, int(command_list[1])):
+            result_list = add_manipulation(target_list, int(command_list[1]), int(command_list[2]))
         else:
             print("Invalid placement!")
             result_list = target_list
 
     elif command_list[0] == "Strike":
-        if index_validation(target_list, int(command_list[1])):
-            result_list = shoot_manipulation(target_list, int(command_list[1]), int(command_list[2]))
+        if idx_validation(target_list, int(command_list[1])) and idx_validation(target_list, int(command_list[1]) - 1)\
+                and idx_validation(target_list, int(command_list[1]) + 1):
+            result_list = strike_manipulation(target_list, int(command_list[1]), int(command_list[2]))
         else:
             print("Strike missed!")
             result_list = target_list
