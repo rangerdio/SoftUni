@@ -12,4 +12,4 @@ while name != "End":
     name = input()
 
 print(f"Going: {', '.join(party.people)}")
-print(f"Total: {total_people_going}")
+print(f"Total: {Party.counter}")
