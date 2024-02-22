@@ -1,8 +1,8 @@
 class Zoo:
     __animals = 1
 
-    def __init__(self, zoo_name):
-        self.zoo_name = zoo_name
+    def __init__(self, name):
+        self.name = name
         self.mammals = []
         self.fish = []
         self.birds = []
@@ -19,17 +19,26 @@ class Zoo:
     def get_info(self, species):
         result = ""
         if species == "mammal":
-            pass
-        elif species == "fish"
-            pass
+            result += f"Mammals in {self.name}: {', '.join(self.mammals)}\n"
+        elif species == "fish":
+            result += f"Fishes in {self.name}: {', '.join(self.fish)}\n"
         elif species == "bird":
-            pass
+            result += f"Birds in {self.name}: {', '.join(self.birds)}\n"
+
+        result += f"Total animals: {Zoo.__animals}"
+
+        return result
 
 
-        return f"{self.species} in {self.zoo_name}: {self.name}\nTotal animals: {Zoo.__animals}"
-
-
-name_ = input()
+zoo_name = input()
+zoo = Zoo(zoo_name)
 total = int(input())
 for i in range(total):
     animal_info = input().split()
+    species = animal_info[0]
+    name = animal_info[1]
+    zoo.add_animal(species, name)
+
+info = input()
+print(zoo.get_info(info))
+
