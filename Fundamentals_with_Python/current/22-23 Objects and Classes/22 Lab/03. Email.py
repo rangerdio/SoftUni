@@ -12,10 +12,13 @@ class Email:
         return f"{self.sender} says to {self.receiver}: {self.content}. Sent: {self.is_sent}"
 
 
-information = input()
 emails = []
 
-while information != "Stop":
+while True:
+    information = input()
+
+    if information == "Stop":
+        break
 
     information = information.split()
     sender = information[0]
@@ -23,11 +26,12 @@ while information != "Stop":
     content = information[2]
     email = Email(sender, receiver, content)
     emails.append(email)
+    # print(type(email))
 
-    information = input()
 
-indexes = [int(index) for index in input().split(", ")]
+indices = [int(index) for index in input().split(", ")]
+print(indices)
 
-for index in indexes:
+for index in indices:
     emails[index].send()
 
