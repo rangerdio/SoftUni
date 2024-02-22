@@ -1,5 +1,5 @@
 class Zoo:
-    __animals = 1
+    __animals = 0
 
     def __init__(self, name):
         self.name = name
