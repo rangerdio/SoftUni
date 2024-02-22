@@ -30,8 +30,10 @@ while True:
 
 
 indices = [int(index) for index in input().split(", ")]
-print(indices)
+# print(indices)
 
 for index in indices:
     emails[index].send()
 
+for email in emails:
+    print(email.get_info())
