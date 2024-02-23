@@ -25,11 +25,6 @@ for element in introduction_objects:
 # that prints out the person's name and age.
 #
 #
-# Ivan 44
-# Dara 22
-# Kalin 54
-# Svetlana 19
-# Stop
 # PyCharm Test and Answers: python Copy code
 # person = Person("Alice", 30)
 # person.introduce()
