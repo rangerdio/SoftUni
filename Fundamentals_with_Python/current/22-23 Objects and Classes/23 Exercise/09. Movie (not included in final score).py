@@ -18,6 +18,7 @@ class Movie:
     def __repr__(self):
         pass
 
+
 first_movie = Movie("Inception", "Christopher Nolan")
 second_movie = Movie("The Matrix", "The Wachowskis")
 third_movie = Movie("The Predator", "Shane Black")
