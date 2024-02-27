@@ -5,9 +5,8 @@ class Inventory:
         self.items = []
 
     def add_item(self, item: str):
-        if self.__capacity >= len(self.items):
+        if len(self.items) < self.__capacity:
             self.items.append(item)
-            self.__capacity -= 1
         else:
             return "not enough room in the inventory"
 
@@ -15,7 +14,7 @@ class Inventory:
         return self.__capacity
 
     def __repr__(self):
-        return f"Items: {', '.join(self.items)}.\nCapacity left: {self.__capacity}"
+        return f"Items: {', '.join(self.items)}.\nCapacity left: {self.__capacity - len(self.items)}"
 
 
 inventory = Inventory(2)
