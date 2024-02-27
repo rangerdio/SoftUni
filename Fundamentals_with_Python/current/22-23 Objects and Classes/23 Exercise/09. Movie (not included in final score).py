@@ -1,3 +1,31 @@
-ivan = None
-if ivan:
-    print("Asd")
+class Movie:
+    __watched_movies = 0
+
+    def __init__(self, name: str, director: str):
+        self.name = name
+        self.director = director
+        self.watched = False
+
+    def change_name(self, new_name: str):
+        pass
+
+    def change_director(self, new_director: str):
+        pass
+
+    def watch(self):
+        pass
+
+    def __repr__(self):
+        pass
+
+first_movie = Movie("Inception", "Christopher Nolan")
+second_movie = Movie("The Matrix", "The Wachowskis")
+third_movie = Movie("The Predator", "Shane Black")
+first_movie.change_director("Me")
+third_movie.change_name("My Movie")
+first_movie.watch()
+third_movie.watch()
+first_movie.watch()
+print(first_movie)
+print(second_movie)
+print(third_movie)
