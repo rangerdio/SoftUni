@@ -4,16 +4,24 @@ class Vehicle:
         self.type = type
         self.model = model
         self.price = price
-        owner = None
+        self.owner = None
 
     def buy(self, money: int, owner: str):
-        pass
+        if self.owner:
+            return "Car already sold"
+        elif money < self.price:
+            return "Sorry, not enough money"
+        else:
+            self.owner = owner
+            return f"Successfully bought a {self.type}. Change: {self.price - money}"
+
 
     def sell(self):
         pass
 
     def __repr__(self):
         pass
+
 
 vehicle_type = "car"
 model = "BMW"
