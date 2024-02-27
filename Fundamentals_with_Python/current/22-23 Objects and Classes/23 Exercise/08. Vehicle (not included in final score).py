@@ -13,14 +13,19 @@ class Vehicle:
             return "Sorry, not enough money"
         else:
             self.owner = owner
-            return f"Successfully bought a {self.type}. Change: {self.price - money}"
-
+            return f"Successfully bought a {self.type}. Change: {abs(self.price - money):.2f}"
 
     def sell(self):
-        pass
+        if self.owner:
+            self.owner = None
+        else:
+            return "Vehicle has no owner"
 
     def __repr__(self):
-        pass
+        if self.owner:
+            return f"{self.model} {self.type} is owned by: {self.owner}"
+        else:
+            return f"{self.model} {self.type} is on sale: {self.price}"
 
 
 vehicle_type = "car"
