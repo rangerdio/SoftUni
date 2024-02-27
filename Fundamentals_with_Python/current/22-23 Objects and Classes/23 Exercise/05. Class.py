@@ -12,11 +12,11 @@ class Class:
             self.grades.append(grade)
 
     def get_average_grade(self):
-        return float(f"{(sum(self.grades) / len(self.grades)):.2f}")
+        average = sum(self.grades) / len(self.grades)
+        return float(f"{average:.2f}")
 
     def __repr__(self):
-        students = ", ".join(self.students)
-        return f'The students in {self.name}: {students}. Average grade: {a_class.get_average_grade()}'
+        return f'The students in {self.name}: {", ".join(self.students)}. Average grade: {self.get_average_grade()}'
 
 
 
