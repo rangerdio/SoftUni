@@ -7,16 +7,18 @@ class Movie:
         self.watched = False
 
     def change_name(self, new_name: str):
-        pass
+        self.name = new_name
 
     def change_director(self, new_director: str):
-        pass
+        self.director = new_director
 
     def watch(self):
-        pass
+        if not self.watched:
+            self.watched = True
+            Movie.__watched_movies += 1
 
     def __repr__(self):
-        pass
+        return f"Movie name: {self.name}; Movie director: {self.director}. Total watched movies: {Movie.__watched_movies}"
 
 
 first_movie = Movie("Inception", "Christopher Nolan")
