@@ -7,9 +7,13 @@ while True:
     product_key = product_list[0]
     quantity = int(product_list[1])
     if product_key not in products:
-        products[product_key] = quantity
+        products[product_key] = 0
     products[product_key] += quantity
 
-print(products)
+# for product, quant in products.items():
+#     print(f"- {product}: {quant}")
+
+[print(f"- {product}: {quant}") for product, quant in products.items()]
+
 print(f"Total Products: {len(products)}")
 print(f"Total Quantity: {sum(products.values())}")
