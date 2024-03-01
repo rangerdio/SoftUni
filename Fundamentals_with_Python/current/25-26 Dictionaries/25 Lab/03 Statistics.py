@@ -12,7 +12,7 @@ while True:
 
 # for product, quant in products.items():
 #     print(f"- {product}: {quant}")
-
+print("Products in stock:")
 [print(f"- {product}: {quant}") for product, quant in products.items()]
 
 print(f"Total Products: {len(products)}")
