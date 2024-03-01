@@ -3,10 +3,10 @@ list_students = []
 while True:
     command = input()
     if ":" not in command:
-        search_with = command
+        search_with = " ".join(command.split("_"))
         break
     name, id, course = command.split(":")
-    course = "_".join(course.split(" "))
+    # course = "_".join(course.split(" "))
     dict_students = {"name": name, "id": id, "course": course}
     list_students.append(dict_students)
 
