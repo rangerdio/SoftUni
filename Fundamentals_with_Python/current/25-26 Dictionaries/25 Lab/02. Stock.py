@@ -1,11 +1,9 @@
 products_list = input().split()
 products = {}
+search_list = input().split()
 
 for i in range(0, len(products_list), 2):
     products[products_list[i]] = int(products_list[i+1])
-
-search_list = input().split()
-
 
 for product in search_list:
     if product in products:
