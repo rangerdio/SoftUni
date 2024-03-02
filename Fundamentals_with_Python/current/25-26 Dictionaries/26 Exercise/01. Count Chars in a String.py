@@ -1,6 +1,4 @@
-string_input = "text text text"
-text_list = string_input.split()
-# text_list = input().split()
+text_list = input().split()
 letters = {}
 
 for word in text_list:
