@@ -1,4 +1,6 @@
-words = "ivan:ivanov"
+char_list = input().split(", ")
 
-if ":" in words:
-    print("Yes")
+chars = {}
+[chars.update({letter: ord(letter)}) for letter in char_list]
+
+print(chars)
