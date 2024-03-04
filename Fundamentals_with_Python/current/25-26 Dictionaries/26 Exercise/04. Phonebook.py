@@ -1,5 +1,8 @@
 def search(name: str, phonebook: dict):
-    return
+    if name in phonebook.keys():
+        return f"{name} -> {phonebook[name]}"
+    else:
+        return f"Contact {name} does not exist."
 
 
 book = {}
