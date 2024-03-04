@@ -9,13 +9,8 @@ while True:
         items[current_item] = {float(current_price): int(current_quantity)}
     
     else:   # current_item exists
-        inside_dictionary = items[current_item]
-        for key, value in inside_dictionary.items():
-            inside_dictionary[key] += current_quantity
-
-
-
-
+        for key, value in items[current_item].items():
+            items[current_item][key] += int(current_quantity)
 
 print(items)
 
