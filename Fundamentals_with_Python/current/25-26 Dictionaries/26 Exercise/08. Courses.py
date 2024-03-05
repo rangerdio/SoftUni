@@ -16,7 +16,7 @@ while True:
     command = command.split(" : ")
     courses[command[1]] = command[0]
 
-print(courses)
+# print(courses)
 hits = count_students(courses)
 
 for course in hits.keys():
