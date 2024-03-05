@@ -1,6 +1,7 @@
 def register(parking_: dict, username: str, plate: str):
     if username not in parking_.keys():
         parking_[username] = plate
+        print(f"{username} registered {plate} successfully")
     else:   # user parked car in parking, check plate
         if parking_[username] != plate:
             print(f"ERROR: already registered with plate number {plate}")
@@ -8,7 +9,8 @@ def register(parking_: dict, username: str, plate: str):
 
 
 def unregister(parking_: dict, username: str):
-    return
+
+    return parking_
 
 
 n = int(input())
