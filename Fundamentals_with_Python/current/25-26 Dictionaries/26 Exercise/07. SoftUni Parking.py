@@ -14,3 +14,5 @@ for _ in range(n):
         register(parking, command_list[1], command_list[2])
     elif command_list[0] == "unregister":
         unregister(parking, command_list[1])
+
+print(parking)
