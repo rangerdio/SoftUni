@@ -1,5 +1,10 @@
 def register(parking_: dict, username: str, plate: str):
-    return
+    if username not in parking_.keys():
+        parking_[username] = plate
+    else:   # user parked car in parking, check plate
+        if parking_[username] != plate:
+            print(f"ERROR: already registered with plate number {plate}")
+    return parking_
 
 
 def unregister(parking_: dict, username: str):
@@ -11,7 +16,7 @@ parking = {}
 for _ in range(n):
     command_list = input().split()
     if command_list[0] == "register":
-        register(parking, command_list[1], command_list[2])
+        parking = register(parking, command_list[1], command_list[2])
     elif command_list[0] == "unregister":
         unregister(parking, command_list[1])
 
