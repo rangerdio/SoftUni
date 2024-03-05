@@ -1,10 +1,10 @@
 def count_students(courses_: dict):
     result_dict = {}
-    for name in courses_.values():
-        if name not in result_dict:
-            result_dict[name] = 1
+    for name_ in courses_.values():
+        if name_ not in result_dict:
+            result_dict[name_] = 1
         else:
-            result_dict[name] += 1
+            result_dict[name_] += 1
     return result_dict
 
 
@@ -20,7 +20,7 @@ while True:
 hits = count_students(courses)
 
 for course in hits.keys():
-    print(hits[course])
+    print(f"{course}: {hits[course]}")
     for name in courses.keys():
         if courses[name] == course:
             print(f"-- {name}")
