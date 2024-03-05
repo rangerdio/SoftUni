@@ -1,10 +1,10 @@
 def count_students(courses_: dict):
     result_dict = {}
-    for name_ in courses_.values():
-        if name_ not in result_dict:
-            result_dict[name_] = 1
+    for course_name in courses_.values():
+        if course_name not in result_dict:
+            result_dict[course_name] = 1
         else:
-            result_dict[name_] += 1
+            result_dict[course_name] += 1
     return result_dict
 
 
