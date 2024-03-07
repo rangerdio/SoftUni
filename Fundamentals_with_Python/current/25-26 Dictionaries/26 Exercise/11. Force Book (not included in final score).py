@@ -8,8 +8,6 @@ while True:
         break
     elif " | " in data:
         current_user, current_side = data.split(" | ")[1], data.split(" | ")[0]
-        # if current_side in force.keys() and current_user in force.values():
-        #     continue
         if current_side in force.keys():
             isExist = False
             for side in force.keys():
