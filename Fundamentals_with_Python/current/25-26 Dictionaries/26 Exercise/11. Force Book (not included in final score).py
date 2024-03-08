@@ -1,4 +1,5 @@
 force = {}
+
 while True:
     data = input()
     if data == "Lumpawaroo":
@@ -8,7 +9,10 @@ while True:
         if current_user not in force:
             force[current_user] = current_side
         elif force[current_user] != current_side:
+            previous_side = force[current_user]
             force[current_user] = current_side
+            if previous_side in force:
+                force[previous_side].remove(current_user)
 
     elif " -> " in data:
         current_user, current_side = data.split(" -> ")[0], data.split(" -> ")[1]
@@ -17,17 +21,16 @@ while True:
             print(f"{current_user} joins the {current_side} side!")
         else:
             print(f"{current_user} joins the {current_side} side!")
+            previous_side = force[current_user]
             force[current_user] = current_side
+            if previous_side in force:
+                force[previous_side].remove(current_user)
 
-# Organize force users into their respective sides
 sides = {}
 for user, side in force.items():
-    if side not in sides:
-        sides[side] = []
-    sides[side].append(user)
+    sides.setdefault(side, []).append(user)
 
-# Print the sides and their members
-for side, members in sides.items():
-    print(f"Side: {side}, Members: {len(members)}")
-    for member in members:
-        print(f"! {member}")
+for side, users in sides.items():
+    print(f"Side: {side}, Members: {len(users)}")
+    for user in users:
+        print(f"! {user}")
