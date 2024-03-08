@@ -1,3 +1,22 @@
+def ranking(students_: list, submission_dict_: dict):
+    for student_ in sorted(students_):
+        print(f"Ranking:\n{student_}")
+        values_to_use = []  # export list so to sort the fucking data
+        for inside_dict in submission_dict_.values():
+            if student_ in inside_dict.keys():
+                values_to_use.append(inside_dict[student_])
+        values_to_use_sorted = sorted(values_to_use, reverse=True)
+
+        for value_ in values_to_use_sorted:
+            for submission__, inside_dict in submission_dict_.items():
+                key_ = ""
+                for key, value in inside_dict.items():
+                    if value == value_:
+                        key_ = key
+                print(f"# {submission__} -> {key_}")
+    return
+
+
 contests_dict = {}
 submissions_dict = {}
 
@@ -43,3 +62,6 @@ print(f"Best candidate is {winner} with total {students_results[winner]} points.
 
 print(students)
 print(students_results)
+
+
+print(ranking(students, submissions_dict))
