@@ -23,8 +23,23 @@ while True:
 print(contests_dict)
 print(submissions_dict)
 
-students = []
+students = []   # get students
+students_results = {}   # get total results for students
 for contest_values in submissions_dict.values():
-    [students.append(key) for key in contest_values]
+    [students.append(key) for key in contest_values if key not in students]
+
+for student in students:
+    total_points = 0
+    for values in submissions_dict.values():
+        if student in values:
+            total_points += values[student]
+    students_results[student] = total_points
+
+winner = ""
+for student in students_results.keys():
+    winner = max(students_results, key=students_results.get)
+
+print(f"Best candidate is {winner} with total {students_results[winner]} points.")
 
 print(students)
+print(students_results)
