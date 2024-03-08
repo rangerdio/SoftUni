@@ -20,24 +20,29 @@ while True:
         username, language, points = data.split("-")[0], data.split("-")[1], int(data.split("-")[2])
 
         if username not in database.keys():  # if username is not in database
-            #  database[username][language] = points
-            print(username)
-            languages = {language: points}
-            database[username] = languages
-            language_submissions = {language: 1}
-            database_submissions[username] = language_submissions
+            database[username] = {language: points}
+            database_submissions = {language: 1}
+            #  database_submissions[username] = language_submissions
+            #  print(database)
         elif username in database.keys():  # if username in database,
             if language not in database[username].keys():  # but language is not in users langs
                 database[username] = {language: points}
-                language_submissions = {language: 1}
-                database_submissions[username] = language_submissions
+                lan = {language: 1}
+                #  database_submissions[username] = language_submissions
+                #  print(database)
             else:  # language is also in the users langs
-                database_submissions[username][language] += 1
+                database_submissions[language] += 1
                 if database[username][language] <= points:
                     database[username][language] = points
+                #  print(database)
 
-
-print(database)
 print(database_submissions)
-print(banned)
 
+# print("Results:")
+# for user, value in database.items():
+#     print(f"{user} | {' '.join(map(str, database[user].values()))}")
+#
+# print(database_submissions)
+# # for user, value in database_submissions.items():
+# #     print(f"{database_submissions[user]} - {database_submissions.values()}")
+#
