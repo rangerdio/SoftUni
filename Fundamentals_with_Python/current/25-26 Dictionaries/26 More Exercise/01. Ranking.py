@@ -22,3 +22,9 @@ while True:
 
 print(contests_dict)
 print(submissions_dict)
+
+students = []
+for contest_values in submissions_dict.values():
+    [students.append(key) for key in contest_values]
+
+print(students)
