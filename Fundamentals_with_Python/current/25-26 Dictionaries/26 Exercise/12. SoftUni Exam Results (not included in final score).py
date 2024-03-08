@@ -1,48 +1,40 @@
 def ban(database_: dict, username_: str, banned_: list):
     database_.pop(username_)
-    banned_. append(username_)
-    return [database_, banned_]
+    banned_.append(username_)
 
 
-#  storage = {"ivan": {"basics": 100, "fundamentals": 80, "advance": 44}}
 database = {}
-database_submissions = {}
+language_submissions = {}
+
 banned = []
 while True:
     data = input()
     if data == "exam finished":
         break
-    elif data.split("-")[1] == "banned":
-        ban_result = ban(database, data.split("-")[0], banned)
-        database = ban_result[0]
-        banned = ban_result[1]
+    elif "-banned" in data:
+        banned_user = data.split("-")[0]
+        ban(database, banned_user, banned)
     else:
-        username, language, points = data.split("-")[0], data.split("-")[1], int(data.split("-")[2])
+        username, language, points = data.split("-")
+        points = int(points)
 
-        if username not in database.keys():  # if username is not in database
-            database[username] = {language: points}
-            database_submissions = {language: 1}
-            #  database_submissions[username] = language_submissions
-            #  print(database)
-        elif username in database.keys():  # if username in database,
-            if language not in database[username].keys():  # but language is not in users langs
-                database[username] = {language: points}
-                lan = {language: 1}
-                #  database_submissions[username] = language_submissions
-                #  print(database)
-            else:  # language is also in the users langs
-                database_submissions[language] += 1
-                if database[username][language] <= points:
-                    database[username][language] = points
-                #  print(database)
+        if username not in database:
+            database[username] = {}
 
-print(database_submissions)
+        if language not in database[username] or points > database[username][language]:
+            database[username][language] = points
 
-# print("Results:")
-# for user, value in database.items():
-#     print(f"{user} | {' '.join(map(str, database[user].values()))}")
-#
-# print(database_submissions)
-# # for user, value in database_submissions.items():
-# #     print(f"{database_submissions[user]} - {database_submissions.values()}")
-#
+        #  language_submissions[language] = language_submissions.get(language, 0) + 1
+        if language not in language_submissions:
+            language_submissions[language] = 1
+        else:
+            language_submissions[language] += 1
+
+print("Results:")
+for user, submissions in database.items():
+    max_points = max(submissions.values())
+    print(f"{user} | {max_points}")
+
+print("Submissions:")
+for language, count in language_submissions.items():
+    print(f"{language} - {count}")
