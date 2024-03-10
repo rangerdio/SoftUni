@@ -1,6 +1,4 @@
 def get_extension(words: list):  # get the additional value if one of the strings is longer than other
-    len_ = 0
-    adds_string = ""
     adds_number = 0
     if len(words[0]) < len(words[1]):
         len_ = len(words[0])
