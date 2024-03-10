@@ -23,10 +23,7 @@ def get_calculation(strings_: list):    # calculate the value based on the short
 
 
 strings = input().split()
-
 if len(strings[0]) > len(strings[1]):   # make sure that first string is the shorter if different lenght
     strings[0], strings[1] = strings[1], strings[0]
 
-total = get_calculation(strings) + get_extension(strings)
-print(total)
-
+print(get_calculation(strings) + get_extension(strings))
