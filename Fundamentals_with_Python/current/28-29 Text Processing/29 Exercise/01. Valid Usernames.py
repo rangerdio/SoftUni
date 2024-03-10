@@ -19,6 +19,5 @@ for username in data["usernames"]:
     if is_valid(username):
         data["valid"].append(username)
 
-print(data["usernames"])
-print(data["valid"])
+print("\n".join(data["valid"]))
 
