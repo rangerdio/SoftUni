@@ -28,3 +28,4 @@ print(f"Unique symbols used: {len(set(uniq))}")
 
 for index in range(len(words)):
     print(words[index] * numbers[index], end="")
+
