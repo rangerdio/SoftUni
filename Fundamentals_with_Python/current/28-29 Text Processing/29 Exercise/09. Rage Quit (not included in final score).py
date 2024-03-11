@@ -23,10 +23,8 @@ if current_str:
     words.append(current_str)
 
 uniq = "".join(words)
-uniq_d = {}
-for element in uniq:
-    uniq_d[element] = 1
-print(f"Unique symbols used: {len(uniq_d)}")
+
+print(f"Unique symbols used: {len(set(uniq))}")
 
 for index in range(len(words)):
     print(words[index] * numbers[index], end="")
