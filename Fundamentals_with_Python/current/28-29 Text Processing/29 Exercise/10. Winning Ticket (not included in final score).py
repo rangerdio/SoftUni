@@ -34,7 +34,6 @@ def confirm_winner(left_d: dict, right_d: dict, ticket__):
 
 
 def is_winning(ticket):
-    winner = False
     left = ticket[:10]
     right = ticket[10:]
 
@@ -73,7 +72,6 @@ tickets = line.split()
 tickets = "".join(tickets)
 tickets = tickets.split(",")
 
-
 for element in tickets:
     if not isvalid(element):
         print("invalid ticket")
@@ -83,6 +81,3 @@ for element in tickets:
 
         elif element[:10] != element[10:]:
             is_winning(element)
-
-
-
