@@ -5,24 +5,77 @@ def isvalid(ticket):
         return False
 
 
+def confirm_winner(left_d: dict, right_d: dict, ticket__):
+    left_symbol = ""
+    right_symbol = ""
+    left_symbol_value = ""
+    right_symbol_value = ""
+    for key, value in left_d.items():
+        if value >= 6:
+            left_symbol = key
+            left_symbol_value = left_d[left_symbol]
+
+    for key, value in right_d.items():
+        if value >= 6:
+            right_symbol = key
+            right_symbol_value = right_d[right_symbol]
+
+    if left_symbol and right_symbol:
+        if left_symbol != right_symbol:
+            print(f'"ticket "{ticket__}" - no match"')
+        else:
+            symbol = right_symbol if left_symbol_value > right_symbol_value else left_symbol
+            print(f'ticket "{ticket__}" - {right_symbol_value}{symbol}')
+
+    elif not left_symbol or not right_symbol:
+        print(f'"ticket "{element}" - no match"')
+
+
 def is_winning(ticket):
     winner = False
     left = ticket[:10]
     right = ticket[10:]
-    left_counter = 0
-    right_counter = 0
+    left_counter = 1
+    right_counter = 1
+    # left_symbol = ""
+    # right_symbol = ""
     symbol = ""
-    for index, letter in enumerate(left):
-        if 10 > left.count(letter) >= 6:
-            left_counter = left.count(letter)
-            for letter_right in right:
-                if 10 > right.count(letter) >= 6:
-                    right_counter = right.count(letter)
-                    symbol = letter
-                    winner = True
-    if winner:
-        counter = left_counter if left_counter <= right_counter else right_counter
-        print(f'ticket "{ticket}" - {counter}{symbol}')
+    left_dict = {}
+    right_dict = {}
+    for index in range(len(left)):
+        if index == len(left) - 1:
+            if left[index] == left[index - 1]:
+                left_dict[left[index]] = left_counter
+            else:
+                left_dict[left[index]] = left_counter
+                left_dict[left[index - 1]] = left_counter
+
+        elif left[index] == left[index + 1]:
+            left_counter += 1
+
+        elif left[index] != left[index + 1]:
+            left_dict[left[index]] = left_counter
+            left_counter = 1
+
+    for index in range(len(right)):
+        if index == len(right) - 1:
+            if right[index] == right[index - 1]:
+                right_dict[right[index]] = right_counter
+            else:
+                right_dict[right[index]] = right_counter
+                right_dict[right[index - 1]] = right_counter
+
+        elif right[index] == right[index + 1]:
+            right_counter += 1
+
+        elif right[index] != right[index + 1]:
+            right_dict[right[index]] = right_counter
+            right_counter = 1
+
+    # print(left_dict)
+    # print(right)
+    # print(right_dict)
+    confirm_winner(left_dict, right_dict, ticket)
 
 
 line = input()
@@ -39,8 +92,7 @@ for element in tickets:
             print(f'ticket "{element}" - {10}{element[0]} Jackpot!')
 
         elif element[:10] != element[10:]:
-             result = is_winning(element)
-        else:
-            print(f'"ticket "{element}" - no match"')
+            is_winning(element)
+
 
 
