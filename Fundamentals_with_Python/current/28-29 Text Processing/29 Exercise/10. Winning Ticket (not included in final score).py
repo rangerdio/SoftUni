@@ -40,6 +40,7 @@ for element in tickets:
 
         elif element[:10] != element[10:]:
              result = is_winning(element)
-
+        else:
+            print(f'"ticket "{element}" - no match"')
 
 
