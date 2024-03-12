@@ -24,13 +24,14 @@ def confirm_winner(left_d: dict, right_d: dict, ticket__):
 
     if left_symbol and right_symbol:
         if left_symbol != right_symbol:
-            print(f'"ticket "{ticket__}" - no match"')
+            print(f'"ticket "{ticket__}" - no match')
         else:
             symbol = right_symbol if left_symbol_value > right_symbol_value else left_symbol
             print(f'ticket "{ticket__}" - {right_symbol_value}{symbol}')
 
     elif not left_symbol or not right_symbol:
-        print(f'"ticket "{element}" - no match"')
+        print(f'"ticket "{element}" - no match')
+
 
 def is_winning(ticket):
     winner = False
