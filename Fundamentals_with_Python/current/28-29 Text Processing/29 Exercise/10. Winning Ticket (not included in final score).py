@@ -10,6 +10,7 @@ def confirm_winner(left_d: dict, right_d: dict, ticket__):
     right_symbol = ""
     left_symbol_value = ""
     right_symbol_value = ""
+
     for key, value in left_d.items():
         if value >= 6:
             left_symbol = key
@@ -19,6 +20,7 @@ def confirm_winner(left_d: dict, right_d: dict, ticket__):
         if value >= 6:
             right_symbol = key
             right_symbol_value = right_d[right_symbol]
+    print(right_symbol_value)
 
     if left_symbol and right_symbol:
         if left_symbol != right_symbol:
