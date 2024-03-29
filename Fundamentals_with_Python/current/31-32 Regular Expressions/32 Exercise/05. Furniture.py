@@ -2,11 +2,8 @@ import re
 items = []
 total_cost = 0
 
-while True:
-    current_item = input()
-    if current_item == "Purchase":
-        break
-
+current_item = input()
+while current_item != "Purchase":
     pattern = r''
     furniture_name, price, quantity = re.finditer(pattern, current_item)
     total_cost += price * quantity
