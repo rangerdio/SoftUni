@@ -19,4 +19,4 @@ while True:
 print("Bought furniture:")
 for item in items:
     print(item)
-print(f'Total money spend: {total_cost}')
+print(f'Total money spend: {total_cost:.2f}')
