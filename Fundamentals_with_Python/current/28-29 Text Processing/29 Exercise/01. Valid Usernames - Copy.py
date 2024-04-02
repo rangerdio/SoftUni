@@ -5,7 +5,6 @@ for username in usernames:
     if not (len(username) < 3 or len(username) > 16):
         valid_len.append(username)
 
-
 for username in valid_len:
     isvalid = True
     for ch in username:
