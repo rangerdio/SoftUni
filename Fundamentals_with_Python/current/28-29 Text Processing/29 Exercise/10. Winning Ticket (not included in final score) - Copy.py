@@ -43,7 +43,7 @@ for ticket_ in ticket_s:
         # print(analyse_ticket)
 
         if analyse_ticket[0] == "jackpot":
-            print(f'ticket "{ticket_}" - {analyse_ticket[1]} {analyse_ticket[2]} Jackpot!')
+            print(f'ticket "{ticket_}" - {analyse_ticket[1]}{analyse_ticket[2]} Jackpot!')
         elif analyse_ticket[0] == "winning":
             print(f'ticket "{ticket_}" - {analyse_ticket[1]}{analyse_ticket[2]}')
         elif analyse(ticket_)[0] == "no_match":
