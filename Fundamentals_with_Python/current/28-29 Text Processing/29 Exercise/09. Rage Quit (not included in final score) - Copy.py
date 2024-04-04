@@ -1,5 +1,4 @@
-# line = input()
-line = "a3"
+line = input()
 unique = {}
 result_line = ""
 
