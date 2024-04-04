@@ -4,7 +4,8 @@ for i in range(n):
     lines.append(input())
 
 for line in lines:
-    if all(char in line for char in ("@", "|", "#", "*")):
+    character_list = ["@", "|", "#", "*"]
+    if all(char in line for char in character_list):
         for index, letter in enumerate(line):
             if letter == "@":
                 monkey_index = index
