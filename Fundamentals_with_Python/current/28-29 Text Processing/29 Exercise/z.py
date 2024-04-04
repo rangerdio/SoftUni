@@ -1,33 +1,27 @@
-def is_winning(ticket):
-    winner = False
-    left = ticket[:10]
-    right = ticket[10:]
+def analyse(ticket: str):
+    left_side = ticket[0:10]
+    right_side = ticket[10:]
+    if "@" or "#" or "$" or "^" in ticket:  # winning ticket
+        if left_side == right_side:         # jackpot
+            return ["jackpot", len(left_side), left_side[0]]
+        else:   # winning : 6-9 matches or not winning : 1-5 matches
+            best_match = 0
+            count_match = 1
+            best_match_symbol = ""
+            previous_state = False
 
-    left_counter = 1
-    right_counter = 1
+            for index in range(len(ticket)):
+                if index == len(ticket) - 1:
+                    continue
 
-    left_dict = {}
-    right_dict = {}
+                if ticket[index] == ticket[index + 1]:
+                    count_match += 1
 
-    for index in range(len(left)):
-        if index == len(left) - 1:
-            left_dict[left[index]] = max(left_counter, left_dict.get(left[index], 0))
-        elif left[index] == left[index + 1]:
-            left_counter += 1
-        else:
-            left_dict[left[index]] = max(left_counter, left_dict.get(left[index], 0))
-            left_counter = 1
-
-    for index in range(len(right)):
-        if index == len(right) - 1:
-            right_dict[right[index]] = max(right_counter, right_dict.get(right[index], 0))
-        elif right[index] == right[index + 1]:
-            right_counter += 1
-        else:
-            right_dict[right[index]] = max(right_counter, right_dict.get(right[index], 0))
-            right_counter = 1
-
-    print(right_dict)
-
-
-is_winning("Cas$$$$$$$Ca$$$$$$s$")
+                #    previous_state = True
+                elif ticket[index] != ticket[index + 1]:
+                    if count_match > best_match:
+                        best_match = count_match
+                        count_match = 1
+                        best_match_symbol = ticket[index]
+                    else:
+                        count_match = 1
