@@ -1,19 +1,25 @@
 def populate_dictionary(results: dict, submissions: dict, user: str, lang: str, pts: int):
-    if user not in results.keys():      # user have no results
+    # if user not in results.keys():      # user have no results
+    #     results[user] = pts
+    #
+    #     if lang not in submissions:             # language have no submissions
+    #         submissions[lang] = 1
+    #     else:                                   # language already have some submissions
+    #         submissions[lang] += 1
+    # else:                               # user already have some results
+    #     if pts > results[user]:
+    #         results[user] = pts
+    #
+    #     if lang not in submissions:             # language have no submissions
+    #         submissions[lang] = 1
+    #     else:                                   # language already have some submissions
+    #         submissions[lang] += 1
+
+    if user not in results or pts > results[user]:
         results[user] = pts
 
-        if lang not in submissions:             # language have no submissions
-            submissions[lang] = 1
-        else:                                   # language already have some submissions
-            submissions[lang] += 1
-    else:                               # user already have some results
-        if pts > results[user]:
-            results[user] = pts
+    submissions[lang] = submissions.get(lang, 0) + 1
 
-        if lang not in submissions:             # language have no submissions
-            submissions[lang] = 1
-        else:                                   # language already have some submissions
-            submissions[lang] += 1
     return results, submissions
 
 
