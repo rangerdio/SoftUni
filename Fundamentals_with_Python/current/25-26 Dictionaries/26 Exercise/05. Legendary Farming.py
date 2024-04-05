@@ -1,10 +1,6 @@
 def get_materials(materials_, legendary_, current_material_, current_value_):
     materials_[current_material_] += current_value_
-    # mark_ = False
-    # while materials_[current_material_] >= 250:
-    #     materials_[current_material_] -= 250
-    #     mark_ = True
-    # if mark_:
+
     if materials_[current_material_] >= 250:
         materials_[current_material_] -= 250
         print(f"{legendary_[current_material_]} obtained!")
