@@ -1,4 +1,5 @@
-countries = input().split()
-capitals = input().split()
+countries = input().split(", ")
+capitals = input().split(", ")
 pairs = dict(zip(countries, capitals))
-print(pairs)
+for country, capital in pairs.items():
+    print(f"{country} -> {capital}")
