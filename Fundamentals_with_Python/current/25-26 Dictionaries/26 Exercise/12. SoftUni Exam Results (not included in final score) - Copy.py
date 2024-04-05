@@ -1,4 +1,4 @@
-def populate_dictionary(results: dict, submissions: dict, user: str, lang: str, pts: str):
+def populate_dictionary(results: dict, submissions: dict, user: str, lang: str, pts: int):
     if user not in results.keys():      # user have no results
         results[user] = pts
 
@@ -27,7 +27,7 @@ while True:
     if line[1] == "banned":
         del user_results[line[0]]
     else:
-        username, language, points = line[0], line[1], line[2]
+        username, language, points = line[0], line[1], int(line[2])
         user_results, submissions_ = populate_dictionary(user_results, submissions_, username, language, points)
 
 print("Results:")
