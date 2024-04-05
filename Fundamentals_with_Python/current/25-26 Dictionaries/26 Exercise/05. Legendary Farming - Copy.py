@@ -10,25 +10,25 @@ while True:
     line = input().lower().split()
 
     for i in range(1, len(line), 2):
-        material = line[i]
+        current_material = line[i]
         qty = int(line[i - 1])
 
-        if material in legendary.keys():
-            bag[material] += qty
+        if current_material in legendary.keys():
+            bag[current_material] += qty
 
-            if bag[material] >= legendary_price:
-                bag[material] -= legendary_price
-                print(f'{legendary[material]} obtained!')
+            if bag[current_material] >= legendary_price:
+                bag[current_material] -= legendary_price
+                print(f'{legendary[current_material]} obtained!')
 
                 flag = True
                 # flag2 = True
                 break
 
         else:
-            if material not in junk.keys():
-                bag[material] = qty
+            if current_material not in junk.keys():
+                bag[current_material] = qty
             else:
-                bag[material] += qty
+                bag[current_material] += qty
     if flag:
         break
 
