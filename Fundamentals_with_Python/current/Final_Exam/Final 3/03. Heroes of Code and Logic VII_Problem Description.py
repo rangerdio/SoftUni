@@ -14,29 +14,50 @@ def cast_spell(heroes_: dict, hero_name_: str, command_value_: int, spell_name: 
 
 
 def take_damage(heroes_: dict, hero_name_: str, command_value_: int, attacker: str):
+    # print(heroes_, hero_name_, command_value_, attacker)
+    hero_current_hp = heroes_[hero_name_]["hp"]
+    damage_to_take = command_value_
+    # print(hero_current_hp, damage_to_take)
+    old_hp = hero_current_hp
+    hero_current_hp -= damage_to_take
+    if hero_current_hp <= 0:
+        del heroes_[hero_name_]
+        print(f'{hero_name_} has been killed by {attacker}!')
+    else:
+        print(f'{hero_name} was hit for {damage_to_take} HP by {attacker} and now has {hero_current_hp} HP left!')
+        heroes_[hero_name_]["hp"] = hero_current_hp
     return heroes_
 
 
-def recharge(heroes_: dict, hero_name_: str, command_value_: int):
+def recharge(heroes_: dict, hero_name_: str, command_value_: int, max_mp_: int):
+    hero_current_mp = heroes_[hero_name_]["mp"]
+    mana_potion = command_value_
+    old_mp = hero_current_mp
+    hero_current_mp += mana_potion
+    if hero_current_mp > max_mp_:
+        hero_current_mp = max_mp_
+        print(f'{hero_name_} recharged for {max_mp_ - old_mp} MP!')
+    else:
+        print(f'{hero_name_} recharged for {mana_potion} MP!')
+    heroes_[hero_name_]["mp"] = hero_current_mp
     return heroes_
 
 
 def heal(heroes_: dict, hero_name_: str, command_value_: int, max_hp_: int):
-    print(heroes_, hero_name_, command_value_, max_hp_)
+    # print(heroes_, hero_name_, command_value_, max_hp_)
     hero_current_hp = heroes_[hero_name_]["hp"]
     healing_amount = command_value_
     # print(hero_current_hp)
     # print(healing_amount)
     old_hp = hero_current_hp
-    #  IF ON MAX HEALTH BEFORE THE ATTEMPT, WE MA Y HAVE "0" MESSAGE ######################################
+    #  IF ON MAX HEALTH BEFORE THE ATTEMPT, WE MA Y HAVE "0" MESSAGE possible Judge issue #######################
     if hero_current_hp + healing_amount >= max_hp_:
         hero_current_hp = max_hp_
     else:
         hero_current_hp += healing_amount
     heroes_[hero_name_]["hp"] = hero_current_hp
-    print(heroes_, hero_name_, command_value_, max_hp_)
+    # print(heroes_, hero_name_, command_value_, max_hp_)
     print(f'{hero_name_} healed for {hero_current_hp - old_hp} HP!')
-
     return heroes_
 
 
@@ -63,7 +84,13 @@ while True:
         heroes = take_damage(heroes, hero_name, int(command_value), line[3])
 
     elif command == "Recharge":
-        heroes = recharge(heroes, hero_name, int(command_value))
+        heroes = recharge(heroes, hero_name, int(command_value), max_mp)
 
     elif command == "Heal":
         heroes = heal(heroes, hero_name, int(command_value), max_hp)
+
+print(heroes)
+for hero, hero_data in heroes.items():
+    print(hero)
+    print(f'  HP: {hero_data["hp"]}')
+    print(f'  MP: {hero_data["mp"]}')
