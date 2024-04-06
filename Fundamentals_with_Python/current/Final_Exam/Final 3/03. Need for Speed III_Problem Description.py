@@ -2,7 +2,13 @@ def drive(cars_: dict, car_: str, distance_: int, fuel_: int):
     return cars_
 
 
-def refuel(cars_: dict, car_: str, fuel_: int):
+def refuel(cars_: dict, car_: str, fuel_: int, max_fuel_: int):
+    current_fuel = cars_[car_]["fuel"]
+    old_fuel = current_fuel
+    current_fuel += fuel_
+    if current_fuel > max_fuel_:
+        current_fuel = max_fuel_
+    print(f'{car} refueled with {current_fuel - old_fuel} liters')
     return cars_
 
 
@@ -18,6 +24,7 @@ def revert(cars_: dict, car_: str, kilometers_: int):
     return cars_
 
 
+max_fuel = 75
 cars = {}
 n = int(input())
 for i in range(n):
@@ -38,7 +45,7 @@ while True:
         cars = drive(cars, car, distance, fuel)
     elif command == "Refuel":
         fuel = int(line[2])
-        cars = refuel(cars, car, fuel)
+        cars = refuel(cars, car, fuel, max_fuel)
     elif command == "Revert":
         kilometers = int(line[2])
         cars = revert(cars, car, kilometers)
