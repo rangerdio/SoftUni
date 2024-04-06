@@ -6,7 +6,15 @@ def refuel(cars_: dict, car_: str, fuel_: int):
     return cars_
 
 
-def revert(cars_: dict, car_: str, kilometers: int):
+def revert(cars_: dict, car_: str, kilometers_: int):
+    current_mileage = cars_[car]["mileage"]
+    old_mileage = current_mileage
+    current_mileage -= kilometers_
+    if current_mileage < 10000:
+        current_mileage = 10000
+    else:
+        print(f'{car_} mileage decreased by {old_mileage - current_mileage} kilometers')
+    cars_[car]["mileage"] = current_mileage
     return cars_
 
 
