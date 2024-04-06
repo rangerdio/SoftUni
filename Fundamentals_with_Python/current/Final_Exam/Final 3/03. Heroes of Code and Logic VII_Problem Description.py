@@ -89,7 +89,6 @@ while True:
     elif command == "Heal":
         heroes = heal(heroes, hero_name, int(command_value), max_hp)
 
-print(heroes)
 for hero, hero_data in heroes.items():
     print(hero)
     print(f'  HP: {hero_data["hp"]}')
