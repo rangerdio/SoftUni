@@ -20,10 +20,6 @@ while True:
     # else:
     #     user_totals[username] += points
 
-# print(database)
-print(user_totals)
-
-
 database_inner_sorted = {}
 database_sorted = {}
 for exam in database.keys():
@@ -35,5 +31,15 @@ for exam in database.keys():
 
 for exam in database_inner_sorted.keys():
     print(f'{exam}: {len(database_inner_sorted[exam])} participants')
+    counter = 0
     for user, points in database_inner_sorted[exam].items():
-        print(f'1. {user} <::> {points}')
+        counter += 1
+        print(f'{counter}. {user} <::> {points}')
+
+user_totals_sorted = dict(sorted(user_totals.items(), key=lambda item: (-item[1], item[0])))
+
+print('Individual standings:')
+counter = 0
+for user, points in user_totals_sorted.items():
+    counter += 1
+    print(f'{counter}. {user} -> {points}')
