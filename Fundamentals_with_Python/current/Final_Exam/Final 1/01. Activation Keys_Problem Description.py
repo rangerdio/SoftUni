@@ -8,7 +8,7 @@ while True:
     if command == "Contains":
         substring = line[1]
         if substring in key:
-            print(f'{key} contains {substring}".')
+            print(f'{key} contains {substring}')
         else:
             print('Substring not found!')
 
@@ -27,13 +27,7 @@ while True:
         start_index = int(line[1])
         end_index = int(line[2])
         key = key[:start_index] + key[end_index:]
-        # new_key = ""
-        # for index in range(len(key)):
-        #     if index < start_index:
-        #         new_key += key[index]
-        #     if index >= end_index:
-        #         new_key += key[index]
-        # key = new_key
+
         print(key)
 
 print(f'Your activation key is: {key}')
