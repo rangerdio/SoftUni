@@ -1,26 +1,28 @@
-def plunder(database: dict):
-    return database
+def plunder(cities_: dict, city_: str, people_to_kill_: int, gold_to_take_: int):
+    return cities_
 
 
-def prosper(database: dict):
-    return database
+def prosper(cities_: dict, city_: str, gold_to_give_: int):
+    return cities_
 
 
-city_data = {}
+cities = {}
 while True:
     line = input().split("||")
     if line[0] == "Sail":
         break
-    city, people, gold = line[0], line[1], line[2]
+    city = line[0]
+    people = int(line[1])
+    gold = int(line[2])
 
-    if city not in city_data.keys():
-        city_data[city] = {"population": int(people), "gold": int(gold)}
+    if city not in cities.keys():
+        cities[city] = {"population": people, "gold": gold}
     else:
-        city_data[city]["population"] += int(people)
-        city_data[city]["gold"] += int(gold)
+        cities[city]["population"] += people
+        cities[city]["gold"] += gold
 
 
-# print(city_data)
+print(cities)
 
 while True:
     line = input().split("=>")
@@ -28,8 +30,11 @@ while True:
         break
     event = line[0]
     if event == "Plunder":
-        city, people, gold = line[1], line[2], line[3]
-        city_data = plunder(city_data)
+        city = line[1]
+        people_to_kill = int(line[2])
+        gold_to_take = int(line[3])
+        cities = plunder(cities, city, people_to_kill, gold_to_take)
     elif event == "Prosper":
-        city, gold = line[1], line[2]
-        city_data = prosper(city_data)
+        city_target = line[1]
+        gold_to_give = int(line[2])
+        cities = prosper(cities, city_target, gold_to_give)
