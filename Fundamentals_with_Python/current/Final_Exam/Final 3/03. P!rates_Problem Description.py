@@ -12,7 +12,7 @@ def plunder(cities_: dict, town_: str, people_to_kill_: int, gold_to_take_: int)
     if current_town_gold <= 0 or current_town_population <= 0:
         mark = True
         # if down must stay in the list, with respective 0es, must modify this respectively
-        # so, should put the respecive values to 0, not to delete the city
+        # so, should put the respective values to 0, not to delete the city
         if current_town_gold <= 0 and current_town_population <= 0:     # both are gone
             print(f'{town_} plundered! {old_current_town_gold} gold stolen, {old_current_town_population} citizens killed.')
         elif current_town_gold <= 0 < current_town_population:  # only gold is gone
