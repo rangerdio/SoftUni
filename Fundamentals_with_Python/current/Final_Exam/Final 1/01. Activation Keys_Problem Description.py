@@ -27,7 +27,5 @@ while True:
         start_index = int(line[1])
         end_index = int(line[2])
         key = key[:start_index] + key[end_index:]
-
         print(key)
-
 print(f'Your activation key is: {key}')
