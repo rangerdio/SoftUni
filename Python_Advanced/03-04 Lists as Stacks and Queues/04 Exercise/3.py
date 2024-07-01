@@ -2,6 +2,7 @@ from collections import deque
 food_amount = int(input())
 
 orders = deque(map(int, input().split()))
+print(max(orders))
 
 while orders:
     current_order = orders.popleft()
