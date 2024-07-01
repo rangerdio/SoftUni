@@ -33,3 +33,4 @@ for _ in range(int(input())):
 
 stack.reverse()
 print(*stack, sep=", ")
+# print(", ".join(str(element) for element in stack))
