@@ -20,26 +20,26 @@ while True:
         break
     products.append(product)
 
-free_robots = []
+
 cnt = 0
 while products:
     cnt += 1
     current_time = calculate_time(start_time_data, cnt)
     current_product = products.popleft()
+    free_robots = []
+    print(free_robots)
 
-    for robot, data in robots.items():
-        if robot not in free_robots:
-            if data[1] > 0:
-                robots[robot][1] -= 1  # data[1] -= 1
-                if robots[robot][1] == 0:
-                    free_robots.append(robot)
-                    robots[robot][1] = robots[robot][0]  # data[1] = data[0]
-
-            if data[1] == 0:
-                free_robots.append(robot)
-                robots[robot][1] = robots[robot][0]  # data[1] = data[0]
+    for robot_name, data in robots.items():
+        if data[1] != 0:
+            robots[robot_name][1] -= 1
+        if data[1] == 0:
+            free_robots.append([robot_name, data])
 
     if not free_robots:
         products.append(current_product)
-    else:
-        print(f"{free_robots.pop(0)} - {current_product} {current_time}")
+        continue
+
+    rob_name, value = free_robots[0]
+    robots[rob_name][1] = value[0]
+
+    print(f"{rob_name} - {current_product} {current_time}")
