@@ -27,7 +27,6 @@ while products:
     current_time = calculate_time(start_time_data, cnt)
     current_product = products.popleft()
     free_robots = []
-    print(free_robots)
 
     for robot_name, data in robots.items():
         if data[1] != 0:
