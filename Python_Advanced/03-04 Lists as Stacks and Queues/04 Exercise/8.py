@@ -33,7 +33,8 @@ while cars:
                 time += ext_time
                 current_char = ""
                 for i in range(time, 0, -1):
-                    current_char = current_model.popleft()
+                    current_char = current_model[0]
+                    current_model = current_model[1:]
                 print('A crash happened!')
                 print(f'{current_car} was hit at {current_char}.')
                 is_crash = True
