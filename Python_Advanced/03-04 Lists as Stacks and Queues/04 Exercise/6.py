@@ -1,25 +1,52 @@
-from collections import deque
-
-parentheses = deque(input())
+is_unbalanced = False
+stack = []
 opening = "([{"
 closing = ")]}"
-counter = 0
+parentheses = input()
 
-while parentheses and counter < len(parentheses) / 2:
-    if parentheses[0] in closing:
-        break
-    else:
-        index = opening.index(parentheses[0])
-
-        if parentheses[1] == closing[index]:
-            parentheses.popleft()
-            parentheses.popleft()
-            parentheses.rotate(counter)
-            counter = 0
+for element in parentheses:
+    if element in opening:
+        stack.append(element)
+    elif element in closing:
+        index = closing.index(element)
+        if stack and stack[len(stack) - 1] == opening[index]:
+            stack.pop()
         else:
-            parentheses.rotate(-1)
-            counter += 1
-print("NO") if parentheses else print("YES")
+            is_unbalanced = True
+            break
+
+if len(stack) != 0:
+    is_unbalanced = True
+
+print("YES") if not is_unbalanced else print("NO")
+
+
+# from collections import deque
+#
+# parentheses = deque(input())
+# opening = "([{"
+# closing = ")]}"
+# counter = 0
+#
+# while parentheses and counter < len(parentheses) / 2:
+#     if parentheses[0] in closing:
+#         break
+#     else:
+#         index = opening.index(parentheses[0])
+#
+#         if parentheses[1] == closing[index]:
+#             parentheses.popleft()
+#             parentheses.popleft()
+#             parentheses.rotate(counter)
+#             counter = 0
+#         else:
+#             parentheses.rotate(-1)
+#             counter += 1
+# print("NO") if parentheses else print("YES")
+
+
+
+
 
 #
 # from collections import deque
