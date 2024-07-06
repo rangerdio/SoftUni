@@ -1,3 +1,29 @@
+# from collections import deque
+#
+# is_unbalanced = False
+# opening_deque = deque()
+# opening = "([{"
+# closing = ")]}"
+# parentheses = deque(input())
+#
+# while parentheses:
+#     element = parentheses.popleft()
+#     if element in opening:
+#         opening_deque.append(element)
+#     elif element in closing:
+#         index = closing.index(element)
+#         if opening_deque and opening_deque[len(opening_deque) - 1] == opening[index]:
+#             opening_deque.pop()
+#         else:
+#             is_unbalanced = True
+#             break
+#
+# if len(opening_deque) != 0:
+#     is_unbalanced = True
+#
+# print("YES") if not is_unbalanced else print("NO")
+
+
 is_unbalanced = False
 stack = []
 opening = "([{"
