@@ -1,3 +1,6 @@
+# not working
+
+
 from collections import deque
 green_time = int(input())
 free_window = int(input())
