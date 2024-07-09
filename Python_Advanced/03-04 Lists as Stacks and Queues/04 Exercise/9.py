@@ -16,7 +16,7 @@ while bullets and locks:
 
     current_lock = locks.copy().popleft()
 
-    if current_bullet < current_lock:
+    if current_bullet <= current_lock:
         locks.remove(current_lock)
         print("Bang!")
     else:
