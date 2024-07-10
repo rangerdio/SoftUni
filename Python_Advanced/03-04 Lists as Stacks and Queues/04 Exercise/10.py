@@ -24,6 +24,6 @@ if not cups_capacity:
     print(*bottle_capacity, sep=" ")
 
 if not bottle_capacity:
-    print("Cups:", end="")
+    print("Cups: ", end="")
     print(*cups_capacity, sep=" ")
-print(f"Wasted litters of watter: {wasted}")
+print(f"Wasted litters of water: {wasted}")
