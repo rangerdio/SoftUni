@@ -2,7 +2,7 @@ from collections import deque
 
 bullet_price = int(input())
 barrel_size = int(input())
-bullets = deque(list(map(int, input().split())))
+bullets = list(map(int, input().split()))
 locks = deque(list(map(int, input().split())))
 intelligence = int(input())
 
@@ -17,7 +17,8 @@ while bullets and locks:
     current_lock = locks.copy().popleft()
 
     if current_lock >= current_bullet:
-        locks.remove(current_lock)
+        # locks.remove(current_lock)
+        locks.popleft()
         print("Bang!")
     else:
         print("Ping!")
