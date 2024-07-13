@@ -85,8 +85,23 @@ print(cars)
 while cars:
     current_loop = cars.popleft()
 
+    light_queue = deque()
     while current_loop:
 
         current_car = cars.popleft()
+
         if current_car == "green":
-            pass
+
+            green_counter = 0
+            while light_queue:
+                car = light_queue.popleft()
+                while car:
+                    green_counter += 1
+
+                    if green_counter < green_light_duration:
+                        symbol = car.popleft()
+                    else:
+
+
+        else:
+            light_queue.append(current_car)
