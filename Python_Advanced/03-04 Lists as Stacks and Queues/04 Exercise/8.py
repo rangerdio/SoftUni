@@ -101,7 +101,7 @@ while cars:
                     if green_counter < green_light_duration:
                         symbol = car.popleft()
                     else:
-
+                        pass
 
         else:
             light_queue.append(current_car)
