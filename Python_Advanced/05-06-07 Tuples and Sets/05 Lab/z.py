@@ -22,6 +22,35 @@
 #
 # print(koko.index(10))
 
-text = "hello"
-text += "!"
-print(text)
+# text = "hello"
+# text += "!"
+# print(text)
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6])
+
+print("union, ", a | b)
+print("union, ", a.union(b))
+
+print("intersection, ", a & b)
+print("intersection, ", a.intersection(b))
+
+print("difference, ", a - b)
+print("difference, ", a.difference(b))
+
+print("symmetric difference, ", a ^ b)
+print("symmetric difference, ", a.symmetric_difference(b))
+
+print("subset, ", a < b)
+print("subset, ", a.issubset(b))
+
+print("superset, ", a > b)
+print("superset, ", a.issuperset(b))
+
+
+
+
+# Unique elements - set
+# different elements which to modify and add - list
+# read only collection - Tupple
+# key value pair - Dictionary
