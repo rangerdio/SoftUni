@@ -16,4 +16,4 @@ for i in range(n):
 
     if len(current_intersection) >= len(longest_intersection):
         longest_intersection = current_intersection
-print(f"Longest intersection is {list(longest_intersection)} with lenght {len(longest_intersection)}")
+print(f"Longest intersection is {list(longest_intersection)} with length {len(longest_intersection)}")
