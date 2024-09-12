@@ -54,3 +54,8 @@ print("superset, ", a.issuperset(b))
 # different elements which to modify and add - list
 # read only collection - Tupple
 # key value pair - Dictionary
+
+
+
+tag = (1, 2, 3, 4, 5, 6, 7, 9, 0)
+print(tag)
