@@ -7,14 +7,16 @@ for row in range(1, n + 1):
     for char in name:
         aski_sum += ord(char)
     divided_number = aski_sum // row
-    remainder = aski_sum % row
-    if remainder == 0:
+
+    if divided_number % 2 == 0:
         even_set.add(divided_number)
     else:
         odd_set.add(divided_number)
-sum_even_set = sum(even_set)
+
 sum_odd_set = sum(odd_set)
-if sum_even_set == sum_odd_set:
+sum_even_set = sum(even_set)
+
+if sum_odd_set == sum_even_set:
     union = odd_set.union(even_set)
     print(*union, sep=', ')
 elif sum_odd_set > sum_even_set:
