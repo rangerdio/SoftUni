@@ -34,4 +34,3 @@ if not cups_milk:
     print('Milk: empty')
 else:
     print(f'Milk: {", ".join(map(str, cups_milk))}')
-
