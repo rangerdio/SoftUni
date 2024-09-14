@@ -38,8 +38,6 @@ while strings:
             if second_substring_cut:
                 strings.insert(len(strings) // 2, second_substring_cut)
 
-
-
 # color_map = {
 #     'orange': ['red', 'yellow'],
 #     'purple': ['red', 'blue'],
