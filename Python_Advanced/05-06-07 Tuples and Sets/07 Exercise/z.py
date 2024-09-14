@@ -1,60 +1,58 @@
 from collections import deque
+# strings = deque([x for x in input().split()])
+# strings = deque(['r', 'ue', 'nge', 'ora', 'bl', 'ed'
+strings = deque(['d', 'yel', 'blu', 'e', 'low', 'redd',])
 
-materials = [int(x) for x in input().split()]
-magic = deque([int(x) for x in input().split()])
+available_colors = ("red", "yellow", "blue", "orange", "purple", "green")
+# color_map = {
+#     'orange': ['red', 'yellow'],
+#     'purple': ['red', 'blue'],
+#     'green': ['yellow', 'blue'],
+# }
+# secondary = ['orange', 'purple', 'green']
 
-requirements = {
-    150: 'Doll',
-    250: 'Wooden train',
-    300: 'Teddy bear',
-    400: 'Bicycle',
-}
+colors = []
 
-crafted = {
-    'Bicycle': 0,
-    'Doll': 0,
-    'Teddy bear': 0,
-    'Wooden train': 0,
-}
+while strings:
 
-while materials and magic:
+    # if only one element
+    if len(strings) == 1:
+        substring = strings.pop()
+        if substring in available_colors:
+            colors.append(substring)
+        pass
+    else:
+        # concatenate, check and append the lists
+        first_substring = strings.popleft()
+        second_substring = strings.pop()
+        concatenate = first_substring + second_substring
+        if concatenate in available_colors:
+            colors.append(concatenate)
+        else:
+            first_substring_cut = first_substring[0:-1:]
+            second_substring_cut = second_substring[0:-1:]
 
-    if materials[-1] == 0 and magic[0] == 0:
-        materials.pop()
-        magic.popleft()
-        continue
-    elif materials[-1] == 0:
-        materials.pop()
-        continue
-    elif magic[0] == 0:
-        magic.popleft()
-        continue
+            insert_position = 0
+            if (len(strings) + 2) % 2 == 0:
+                insert_position = len(strings) // 2
+            else:
+                insert_position = len(strings) // 2 - 1
 
-    if materials[-1] * magic[0] in requirements.keys():
-        crafted[requirements[materials[-1] * magic[0]]] += 1
-        materials.pop()
-        magic.popleft()
+            if len(first_substring_cut) != 0:
+                strings.insert(insert_position, first_substring_cut)
+            if len(second_substring_cut) != 0 and len(first_substring_cut) != 0:
+                strings.insert(insert_position + 1, second_substring_cut)
+            elif len(second_substring_cut) != 0 and len(first_substring_cut) == 0:
+                strings.insert(insert_position, second_substring_cut)
 
-    elif materials[-1] * magic[0] < 0:
-        materials[-1] += magic[0]
-        ss = materials.pop()
-        materials.append(ss)
-        magic.popleft()
-
-    elif materials[-1] * magic[0] > 0:
-        materials[-1] += 15
-        magic.popleft()
-
-if crafted['Doll'] > 0 and crafted['Wooden train'] > 0 or crafted['Teddy bear'] > 0 and crafted['Bicycle'] > 0:
-    print('The presents are crafted! Merry Christmas!')
-else:
-    print('No presents this Christmas!')
-
-if materials:
-    print(f'Materials left: {", ".join([str(x) for x in reversed(materials)])}')
-if magic:
-    print(f'Magic left: {", ".join([str(x) for x in magic])}')
-
-for key, value in crafted.items():
-    if value > 0:
-        print(f'{key}: {value}')
+print(colors)
+# for color in secondary:
+#     if color in colors:
+#         needed_colors = color_map[color]
+#         primary_color_1 = needed_colors[0]
+#         primary_color_2 = needed_colors[1]
+#
+#         if primary_color_1 not in colors or primary_color_2 not in colors:
+#             colors.remove(color)
+#
+# print(colors)
