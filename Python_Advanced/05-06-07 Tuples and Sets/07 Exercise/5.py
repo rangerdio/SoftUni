@@ -39,20 +39,15 @@ while materials and magic:
     elif magic_current == 0:
         materials.append(material_current)
 
-    # print(f' after iteration:')
-    # print(f'Materials left: {", ".join([str(x) for x in materials])}')
-    # print(f'Magic left: {", ".join([str(x) for x in magic])}')
-
 if crafted['Doll'] > 0 and crafted['Wooden train'] > 0 or crafted['Teddy bear'] > 0 and crafted['Bicycle'] > 0:
     print('The presents are crafted! Merry Christmas!')
 else:
     print('No presents this Christmas!')
 
 if materials:
-    print(f'Materials left: {", ".join([str(x) for x in materials])}')
+    print(f'Materials left: {", ".join([str(x) for x in reversed(materials)])}')
 if magic:
     print(f'Magic left: {", ".join([str(x) for x in magic])}')
-
 
 for key, value in crafted.items():
     if value > 0:
