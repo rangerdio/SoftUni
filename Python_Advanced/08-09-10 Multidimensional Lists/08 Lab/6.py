@@ -10,4 +10,5 @@ for row in range(len(matrix)):
         is_found = True
         row_pos = row
         col_pos = matrix[row].index(symbol_)
+        break
 print(f'{symbol_} does not occur in the matrix') if not is_found else print(f'({row_pos}, {col_pos})')
