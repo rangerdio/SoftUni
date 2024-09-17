@@ -10,4 +10,6 @@ for row in range(r):
     for col in range(c):
         sublist.append(chr(start_letter_row_num + row) + chr(start_letter_cow_num + col) + chr(start_letter_row_num + row))
     matrix.append(sublist)
-print(matrix)
+
+for row in range(len(matrix)):
+    print(*matrix[row])
