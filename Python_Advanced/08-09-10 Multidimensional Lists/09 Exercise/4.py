@@ -20,7 +20,7 @@ for row in range(rows - 2):
             max_row_2 = [d, e, f]
             max_row_3 = [g, h, i]
 
-print('Sum:', max_sum)
+print('Sum=', max_sum)
 print(*max_row_1)
 print(*max_row_2)
 print(*max_row_3)
