@@ -20,15 +20,17 @@ while bombs:
     col_current_bomb = current_bomb[1]
     explode_value = matrix[row_current_bomb][col_current_bomb]
 
+    if explode_value <= 0:
+        continue
+
     for row_index in range(row_current_bomb - 1, row_current_bomb + 2):
         for col_index in range(col_current_bomb - 1, col_current_bomb + 2):
-            if row_index == row_current_bomb and col_index == col_current_bomb: # bomb location = to 0
-                if matrix[row_index][col_index] > 0:
+            valid_coordinates = check_coordinates([row_index, col_index], n, n)
+            if valid_coordinates:
+                if row_index == row_current_bomb and col_index == col_current_bomb:
                     matrix[row_index][col_index] = 0
-
-            valid_coordinates = check_coordinates([row_index, col_index], n, n)  # check if out of range
-            if valid_coordinates and matrix[row_index][col_index] > 0:
-                matrix[row_index][col_index] -= explode_value
+                elif matrix[row_index][col_index] > 0:
+                    matrix[row_index][col_index] -= explode_value
 
 summ = 0
 alive_cnt = 0
