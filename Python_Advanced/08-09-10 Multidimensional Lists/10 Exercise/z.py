@@ -24,6 +24,7 @@ directions = {
 hits = []
 my_current_position = my_initial_position
 targets_hit = 0
+training_completed = False
 
 for command in commands:
     action = command[0]
@@ -31,20 +32,15 @@ for command in commands:
     if action == "move":
         direction = command[1]
         steps = int(command[2])
-        new_position = my_current_position[:]
+        next_row, next_col = my_current_position
 
-        for _ in range(steps):
-            next_row = new_position[0] + directions[direction][0]
-            next_col = new_position[1] + directions[direction][1]
+        for step in range(steps):
+            next_row += my_current_position[0] + directions[direction][0]
+            next_col += my_current_position[1] + directions[direction][1]
 
-            if 0 <= next_row < 5 and 0 <= next_col < 5 and field[next_row][next_col] == '.':
-                new_position = [next_row, next_col]
-            else:
-                break
-
-        if new_position != my_current_position:
+        if 0 <= next_row < 5 and 0 <= next_col < 5 and field[next_row][next_col] == '.':
+            my_current_position = [next_row, next_col]
             field[my_current_position[0]][my_current_position[1]] = '.'
-            my_current_position = new_position
             field[my_current_position[0]][my_current_position[1]] = 'A'
 
     elif action == "shoot":
@@ -55,21 +51,25 @@ for command in commands:
             shoot_position[0] += directions[direction][0]
             shoot_position[1] += directions[direction][1]
 
-            if not (0 <= shoot_position[0] < 5 and 0 <= shoot_position[1] < 5):
+            if 0 <= shoot_position[0] < 5 and 0 <= shoot_position[1] < 5:
+                if field[shoot_position[0]][shoot_position[1]] == '.':
+                    continue
+                elif field[shoot_position[0]][shoot_position[1]] == 'x':
+                    hits.append([shoot_position[0], shoot_position[1]])
+                    field[shoot_position[0]][shoot_position[1]] = '.'
+                    targets_hit += 1
+                    if targets_hit == targets:
+                        training_completed = True
+                    break
+            else:
                 break
+    if training_completed:
+        break
 
-            if field[shoot_position[0]][shoot_position[1]] == 'x':
-                hits.append([shoot_position[0], shoot_position[1]])
-                field[shoot_position[0]][shoot_position[1]] = '.'
-                targets_hit += 1
-                if targets_hit == targets:
-                    print(f"Training completed! All {targets_hit} targets hit.")
-                    for hit in hits:
-                        print(hit)
-                    exit()
-                break
-
-if targets_hit != targets:
+if training_completed:
+    print(f"Training completed! All {targets_hit} targets hit.")
+else:
     print(f"Training not completed! {targets - targets_hit} targets left.")
-    for hit in hits:
-        print(hit)
+
+for hit in hits:
+    print(hit)
