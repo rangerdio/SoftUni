@@ -1,9 +1,8 @@
-from collections import deque
 presents = int(input())
 n = int(input())
+neighborhood = []
 santa_position = []
 nice_present_given = 0
-neighborhood = []
 nice_kids = 0
 
 for row in range(n):
@@ -13,10 +12,6 @@ for row in range(n):
     nice_kids += current_row.count("V")
     neighborhood.append(current_row)
 
-# print(neighborhood)
-# print(santa_coordinates)
-# print(nice_kids)
-
 directions = {
     "up": [-1, 0],
     "down": [1, 0],
@@ -24,7 +19,8 @@ directions = {
     "right": [0, 1]
 }
 
-for _ in range(n):
+
+while presents > 0:
     command = input()
     if command == "Christmas morning":
         break
@@ -32,42 +28,36 @@ for _ in range(n):
     new_col = santa_position[1] + directions[command][1]
 
     if 0 <= new_row < n and 0 <= new_col < n:
-        neighborhood[santa_position[0]][santa_position[1]] = '-'
-        santa_position = [new_row, new_col]
 
         if neighborhood[new_row][new_col] == "V":   # nice kid receive present
             nice_present_given += 1
             presents -= 1
             neighborhood[new_row][new_col] = "-"
-            if presents == 0:
-                break
-
-        elif neighborhood[new_row][new_col] == "X":
-            neighborhood[new_row][new_col] = "-"
-            continue
 
         elif neighborhood[new_row][new_col] == "C":
-            cookie_row = new_row
-            cookie_col = new_col
-            for key, value in directions.items():
-                if neighborhood[cookie_row + value[0]][cookie_col + value[1]] == 'V':  # neighbor of cookie location
+
+            for value in directions.values():
+                n_row, n_col = new_row + value[0], new_col + value[1]
+                if neighborhood[n_row][n_col] in "V":
                     presents -= 1
-                    neighborhood[cookie_row + value[0]][cookie_col + value[1]] = '-'
+                    neighborhood[n_row][n_col] = "-"
                     nice_present_given += 1
                     if presents == 0:
                         break
-                elif neighborhood[cookie_row + value[0]][cookie_col + value[1]] == 'X':
+                elif neighborhood[n_row][n_col] == 'X':
                     presents -= 1
-                    neighborhood[cookie_row + value[0]][cookie_col + value[1]] = '-'
+                    neighborhood[n_row][n_col] = '-'
                     if presents == 0:
                         break
-            if presents == 0:
-                break
 
-santa_position = [new_row, new_col]
-neighborhood[new_row][new_col] = 'S'
+        elif neighborhood[new_row][new_col] == "X":
+            neighborhood[new_row][new_col] = "-"
 
-if presents == 0:
+        neighborhood[santa_position[0]][santa_position[1]] = '-'
+        santa_position = [new_row, new_col]
+        neighborhood[new_row][new_col] = 'S'
+
+if presents < 1 and nice_kids - nice_present_given > 0:
     print('Santa ran out of presents!')
 for row in range(n):
     print(' '.join(neighborhood[row]))
