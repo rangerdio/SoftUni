@@ -1,18 +1,15 @@
 from collections import deque
 
 field = []
-my_initial_position = []
+my_current_position = []
 targets = 0
 
 for row in range(5):
     sublist = input().split()
     if 'A' in sublist:
-        my_initial_position = [row, sublist.index('A')]
+        my_current_position = [row, sublist.index('A')]
     targets += sublist.count('x')
     field.append(sublist)
-
-n = int(input())
-commands = deque([input().split() for _ in range(n)])
 
 directions = {
     "up": [-1, 0],
@@ -22,53 +19,40 @@ directions = {
 }
 
 hits = []
-my_current_position = my_initial_position
 targets_hit = 0
-training_completed = False
 
-for command in commands:
-    action = command[0]
+for _ in range(int(input())):
+    command = input().split()
 
-    if action == "move":
+    if command[0] == "shoot":
+        next_row = my_current_position[0] + directions[command[1]][0]
+        next_col = my_current_position[1] + directions[command[1]][1]
+
+        while 0 <= next_row < 5 and 0 <= next_col < 5:
+            if field[next_row][next_col] == 'x':
+                hits.append([next_row, next_col])
+                field[next_row][next_col] = '.'
+                targets_hit += 1
+                break   # target is git, moving to next command
+            next_row += directions[command[1]][0]  # no target here, so we continue the bullet direction
+            next_col += directions[command[1]][1]
+
+        if targets_hit == targets:
+            print(f"Training completed! All {targets_hit} targets hit.")
+            break
+
+    elif command[0] == "move":
         direction = command[1]
         steps = int(command[2])
-        next_row, next_col = my_current_position
-
-        for step in range(steps):
-            next_row += my_current_position[0] + directions[direction][0]
-            next_col += my_current_position[1] + directions[direction][1]
+        next_row = my_current_position[0] + directions[direction][0] * steps
+        next_col = my_current_position[1] + directions[direction][1] * steps
 
         if 0 <= next_row < 5 and 0 <= next_col < 5 and field[next_row][next_col] == '.':
-            my_current_position = [next_row, next_col]
+            field[next_row][next_col] = 'A'
             field[my_current_position[0]][my_current_position[1]] = '.'
-            field[my_current_position[0]][my_current_position[1]] = 'A'
+            my_current_position = [next_row, next_col]
 
-    elif action == "shoot":
-        direction = command[1]
-        shoot_position = my_current_position[:]
-
-        while True:
-            shoot_position[0] += directions[direction][0]
-            shoot_position[1] += directions[direction][1]
-
-            if 0 <= shoot_position[0] < 5 and 0 <= shoot_position[1] < 5:
-                if field[shoot_position[0]][shoot_position[1]] == '.':
-                    continue
-                elif field[shoot_position[0]][shoot_position[1]] == 'x':
-                    hits.append([shoot_position[0], shoot_position[1]])
-                    field[shoot_position[0]][shoot_position[1]] = '.'
-                    targets_hit += 1
-                    if targets_hit == targets:
-                        training_completed = True
-                    break
-            else:
-                break
-    if training_completed:
-        break
-
-if training_completed:
-    print(f"Training completed! All {targets_hit} targets hit.")
-else:
+if targets_hit != targets:
     print(f"Training not completed! {targets - targets_hit} targets left.")
 
 for hit in hits:
