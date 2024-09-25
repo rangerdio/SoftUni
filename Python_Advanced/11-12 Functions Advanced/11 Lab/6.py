@@ -16,12 +16,12 @@ def operate(operator, *args):
 
         return reduce(lambda x, y: x / y, args)
 
-    commands = {"+": plus(),
-                "-": minus(),
-                "*": multiply(),
-                '/': divide()}
+    commands = {"+": plus,
+                "-": minus,
+                "*": multiply,
+                '/': divide}
 
-    return commands[operator]
+    return commands[operator]()
 
 
 print(operate("+", 1, 2, 3))
