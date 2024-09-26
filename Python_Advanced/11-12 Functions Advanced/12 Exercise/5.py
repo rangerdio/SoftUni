@@ -4,5 +4,6 @@ def concatenate(*args, **kwargs):
         koko = koko.replace(key, value)
     return koko
 
+
 print(concatenate("Soft", "UNI", "Is", "Grate", "!", UNI="Uni", Grate="Great"))
 print(concatenate("I", " ", "Love", " ", "Cythons", C="P", s="", java='Java'))
