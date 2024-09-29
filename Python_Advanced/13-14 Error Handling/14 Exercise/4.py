@@ -1,3 +1,4 @@
+import math
 class MatrixContentError(Exception):
     pass
 
@@ -18,14 +19,19 @@ def rotate_matrix(matrix):
 
 
 mtrx = []
-
 while True:
     line = input().split()
-
     if not line:
         break
+
+    if any(not char.isdigit() for char in line):
+        # is_int = False
+        raise MatrixContentError('The matrix must consist of only integers')
     mtrx.append(line)
 
+for row in mtrx:
+    if len(row) != len(mtrx):
+        raise MatrixSizeError('The size of the matrix is not a perfect square')
 rotate_matrix(mtrx)
 
 for row in mtrx:
