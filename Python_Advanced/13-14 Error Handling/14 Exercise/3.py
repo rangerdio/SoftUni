@@ -29,8 +29,9 @@ while True:
     if " " in password:
         raise PasswordContainsSpacesError("Password cannot contain spaces")
 
-    if any(char.isdigit() for char in password) \
-            and any(char.isalpha() for char in password) and any(char in specials for char in password):
-        print('Password is valid')
-    else:
-        raise PasswordTooCommonError("Password must be a combination of digits, letters, and special characters")
+    # if any(char.isdigit() for char in password) \
+    #         and any(char.isalpha() for char in password) and any(char in specials for char in password):
+    #     print('Password is valid')
+    # else:
+    #     raise PasswordTooCommonError("Password must be a combination of digits, letters, and special characters")
+    print('Password is valid')
