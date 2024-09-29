@@ -13,11 +13,11 @@ class InvalidDomainError(Exception):
 domains = (".com", ".bg", ".org", ".net")
 while True:
     email = input()
-    name = email.split("@")[0]
-    domain = "." + email.split('.')[1]
     if email == "End":
         break
-    elif len(name) <= 4:
+    name = email.split("@")[0]
+    domain = "." + email.split('.')[1]
+    if len(name) <= 4:
         raise NameTooShortError("Name must be more than 4 characters")
     elif "@" not in email:
         raise MustContainAtSymbolError("Email must contain @")
