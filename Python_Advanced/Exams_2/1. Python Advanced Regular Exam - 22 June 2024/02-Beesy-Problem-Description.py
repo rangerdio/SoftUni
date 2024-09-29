@@ -78,4 +78,4 @@ if not is_hive:
     print('This is the end! Beesy ran out of energy.')
 
 for row in matrix:
-    print(row)
+    print(''.join(x for x in row))
