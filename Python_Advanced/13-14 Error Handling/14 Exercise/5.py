@@ -21,10 +21,10 @@ BALANCE = float(params[1])
 age = int(params[2])
 
 while True:
-    user_input = input()
-    if user_input == 'End':
+    data = input()
+    if data == 'End':
         break
-    command_list = user_input.split('#')
+    command_list = data.split('#')
     command = command_list[0]
     money = float(command_list[1])
 
