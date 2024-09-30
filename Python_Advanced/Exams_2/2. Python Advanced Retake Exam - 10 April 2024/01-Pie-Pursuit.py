@@ -20,9 +20,9 @@ while eat_capacity and pie_pieces:
 
 if not pie_pieces and eat_capacity:
     print('We will have to wait for more pies to be baked!')
-    print('Contestants left: ', '\n'.join(str(x) for x in eat_capacity))
+    print('Contestants left:', ', '.join(str(x) for x in eat_capacity))
 elif not pie_pieces and not eat_capacity:
     print('We have a champion!')
 else:
     print('Our contestants need to rest!')
-    print('Pies left: ','\n'.join(str(x) for x in pie_pieces))
+    print('Pies left:',', '.join(str(x) for x in pie_pieces))
