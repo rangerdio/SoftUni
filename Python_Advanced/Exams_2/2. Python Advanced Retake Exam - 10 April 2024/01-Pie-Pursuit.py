@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 from collections import deque
 eat_capacity = deque([int(x) for x in input().split()])
 pie_pieces = [int(x) for x in input().split()]
