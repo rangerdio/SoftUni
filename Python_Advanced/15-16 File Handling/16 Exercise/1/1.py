@@ -1,0 +1,1 @@
+with open('text.txt', 'r') as my_file:
