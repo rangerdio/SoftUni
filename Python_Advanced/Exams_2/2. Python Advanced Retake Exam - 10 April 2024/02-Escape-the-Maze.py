@@ -18,17 +18,42 @@ directions = {
 health = HEALTH_MAX
 danger_passed = False
 while True:
+    row, col = player_position
     command = input()
-    new_row, new_col = player_position[0] + directions[command], player_position[1] + directions[command]
-    if not (0 <= new_row <= size and 0 <= new_col <= size):
+    new_row = row + directions[command][0]
+    new_col = col + directions[command][1]
+
+    if 0 <= new_row < size and 0 <= new_col < size:
         if maze[new_row][new_col] == 'M':
-            pass
+            health -= 40
+            # print(health)
+            if health <= 0:
+                health = 0
+                maze[row][col] = '-'
+                maze[new_row][new_col] = 'P'
+                break
+            else:
+                maze[row][col] = '-'
+                maze[new_row][new_col] = 'P'
+
         elif maze[new_row][new_col] == 'H':
-            pass
+            health += 15
+            if health > HEALTH_MAX:
+                health = HEALTH_MAX
+            maze[row][col] = '-'
+            maze[new_row][new_col] = 'P'
+
         elif maze[new_row][new_col] == 'X':
-            pass
-        elif maze[new_row][new_col] == '':
-            pass
+            danger_passed = True
+            maze[row][col] = '-'
+            maze[new_row][new_col] = 'P'
+            break
+
+        elif maze[new_row][new_col] == '-':
+            maze[row][col] = '-'
+            maze[new_row][new_col] = 'P'
+
+        player_position = new_row, new_col
     else:
         continue
 
