@@ -1,10 +1,5 @@
-# file = open('koko.txt')
-#
-# koko = file.read()
-# file.close()
-# print(koko)
-# print(file.close())
-import os
-
-print(os.path.abspath('koko.txt'))
-print(os.path.abspath('koko.txt'))
+try:
+    with open('text.txt', 'r') as _:
+        print('File found')
+except FileNotFoundError:
+    print("File not found")
