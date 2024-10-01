@@ -20,11 +20,11 @@ def draw_cards(*args, **kwargs):
     if monster_cards:
         result += "Monster cards:\n"
         for card in monster_cards_sorted:
-            result += f"***{card}\n"
+            result += f"  ***{card}\n"
     if spell_cards:
         result += "Spell cards:\n"
         for card in spell_cards_sorted:
-            result += f"$$${card}\n"
+            result += f"  $$${card}\n"
 
     return result
 
