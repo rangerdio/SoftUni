@@ -1,10 +1,10 @@
+import os
+
 while True:
     data = input()
     if data == "End":
         break
-    # print(data)
     command, filename, *args = data.split('-')
-    # print(command, filename, *args)
     if command == "Create":
         with open(filename, 'w') as my_file:
             my_file.write('')
@@ -16,9 +16,19 @@ while True:
             with open(filename, 'w') as my_file:
                 my_file.write(f'{"".join(args)}\n')
 
-
-
     elif command == "Replace":
-        pass
+        try:
+            with open(filename, 'r') as my_file:
+                content = my_file.read()
+                content = content.replace(args[0], args[1])
+                my_file.close()
+            with open(filename, 'w') as my_file:
+                my_file.write(content)
+        except FileNotFoundError:
+            print('An error occurred')
+
     elif command == "Delete":
-        pass
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
+            print('An error occurred')
