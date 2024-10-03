@@ -59,5 +59,12 @@ while True:
             field[new_row][new_col] = 'P'
             field[row][col] = '.'
 
+if stars == 10:
+    print('You won! You have collected 10 stars.')
+else:
+    print('Game over! You are out of any stars.')
+
+print(f'Your final position is [{player_position[0]}, {player_position[1]}]')
+
 for row in field:
     print(' '.join(row))
