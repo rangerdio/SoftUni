@@ -8,9 +8,6 @@ while bees and eaters:
 
     if current_bee_group < 7 * current_eater_group:
         eaters.append(current_eater_group - current_bee_group // 7)
-
-    elif current_bee_group == 7 * current_eater_group:
-        continue
     else:
         bees.append(current_bee_group - 7 * current_eater_group)
 
