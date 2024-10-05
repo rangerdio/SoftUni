@@ -1,7 +1,0 @@
-function vladi(array){
-	
-	
-	
-    }
-   
-    vladi();
