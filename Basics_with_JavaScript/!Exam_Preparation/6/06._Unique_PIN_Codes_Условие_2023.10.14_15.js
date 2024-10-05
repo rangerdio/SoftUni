@@ -1,0 +1,7 @@
+function vladi(array){
+	
+	
+	
+    }
+   
+    vladi();
