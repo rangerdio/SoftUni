@@ -23,19 +23,10 @@ while armour > 0 and enemies > 0:
     new_row = row + directions[command][0]
     new_col = col + directions[command][1]
 
-    if sky[new_row][new_col] == '-':
-        sky[row][col] = '-'
-        sky[new_row][new_col] = 'J'
-        jet_position = [new_row, new_col]
-        continue
-    elif sky[new_row][new_col] == 'E':
+    if sky[new_row][new_col] == 'E':
         enemies -= 1
-        sky[row][col] = '-'
-        sky[new_row][new_col] = 'J'
-        jet_position = [new_row, new_col]
         if enemies == 0:
             print('Mission accomplished, you neutralized the aerial threat!')
-
         else:
             armour -= 100
             if armour == 0:
@@ -44,9 +35,9 @@ while armour > 0 and enemies > 0:
     elif sky[new_row][new_col] == 'R':
         armour = 300
 
-        sky[row][col] = '-'
-        sky[new_row][new_col] = 'J'
-        jet_position = [new_row, new_col]
+    sky[row][col] = '-'
+    sky[new_row][new_col] = 'J'
+    jet_position = [new_row, new_col]
 
 for row in sky:
     print(''.join(row))
