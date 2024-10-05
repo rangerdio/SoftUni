@@ -20,12 +20,6 @@ if matches > 0:
 else:
     print('There are no matches.')
 
-# if not worms and not holes:
-#     print('Every worm found a suitable hole!')
-# elif not worms:
-#     print('Worms left: none')
-# else:
-#     print(f'Worms left: {", ".join(str(x) for x in worms)}')
 if matches != worms_total:
     # If not all worms found a suitable hole, print the remaining worms.
     print(f"Worms left: {', '.join(map(str, worms))}" if worms else "Worms left: none")
