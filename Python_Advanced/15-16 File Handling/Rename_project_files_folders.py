@@ -18,10 +18,23 @@ def rename(root_dir, files, counter=1):
                 os.rename(path_current_element, new_path)
                 print(f'rename {my_name} to  {my_new_new_name}')
         else:
-            rename(path_current_element, counter - 1)
+            if '-' in path_current_element.split('\\')[-1] or ' ' in path_current_element.split('\\')[-1]:
+                current_folder = path_current_element.split('\\')[-1]
+                current_folder_renamed = current_folder.replace(' ', '_').replace('-', '_')
+                upper = path_current_element.split('\\')[:-1]
+                upper.append(current_folder_renamed)
+                path_current_element_renamed = '\\'.join(upper)
+                os.rename(path_current_element, path_current_element_renamed)
+                print(f'rename folder {path_current_element}\n - - - -  to  {path_current_element_renamed}')
+                rename(path_current_element_renamed, counter - 1)
+            else:
+                rename(path_current_element, counter - 1)
 
 
-r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+
+# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\15-16 File Handling\\'
+# r_dir = '.'
 files_ = []
 
 rename(r_dir, 4)
