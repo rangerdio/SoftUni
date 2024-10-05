@@ -31,12 +31,9 @@ def rename(root_dir, files, counter=1):
                 rename(path_current_element, counter - 1)
 
 
-
 # r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
 r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\15-16 File Handling\\'
 # r_dir = '.'
 files_ = []
-
 rename(r_dir, 4)
-
 # flie_path = os.path.join(r_dir, 'export.txt')
