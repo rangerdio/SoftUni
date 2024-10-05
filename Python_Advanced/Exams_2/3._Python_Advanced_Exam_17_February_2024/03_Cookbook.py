@@ -11,7 +11,7 @@ def cookbook(*ingredients):
         recipes_in_cuisine_sorted = sorted(recipes_in_cuisine, key=lambda x: x[0])
         result += f'{cuisine} cuisine contains {len(recipes_in_cuisine)} recipes:\n'
         for recipe, ingredients_list in recipes_in_cuisine_sorted:
-            result += f' * {recipe} -> Ingredients: {", ".join(ingredients_list)}\n'
+            result += f'  * {recipe} -> Ingredients: {", ".join(ingredients_list)}\n'
 
     return result
 
