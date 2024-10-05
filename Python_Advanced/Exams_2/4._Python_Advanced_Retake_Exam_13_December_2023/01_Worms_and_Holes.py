@@ -19,11 +19,11 @@ while worms and holes:
 
 print(f'Matches: {matches}') if matches else print('There are no matches.')
 
-if worms and not holes:
-    print(f'Worms left: {", ".join(str(x) for x in worms)}')
-elif not worms and not holes:
+if not worms and not holes:
     print(f'Every worm found a suitable hole!')
-elif not worms and matches:
+elif not worms and holes:
     print('Worms left: none')
+elif worms:
+    print(f'Worms left: {", ".join(str(x) for x in worms)}')
 
 print(f'Holes left: {", ".join(str(x) for x in holes)}') if holes else print('Holes left: none')
