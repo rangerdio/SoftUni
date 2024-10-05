@@ -32,7 +32,8 @@ def rename(root_dir, files, counter=1):
 
 
 # r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
-r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Fundamentals_with_Python\\'
 # r_dir = '.'
 files_ = []
 rename(r_dir, 4)
