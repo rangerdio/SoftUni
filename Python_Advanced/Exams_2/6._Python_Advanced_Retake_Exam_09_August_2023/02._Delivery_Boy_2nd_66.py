@@ -19,9 +19,6 @@ directions = {
     "left": [0, -1],
     "right": [0, 1]
 }
-collected = False
-delivered = False
-cancelled = False
 
 while True:
     command = input()
@@ -29,37 +26,36 @@ while True:
     new_row = row + directions[command][0]
     new_col = col + directions[command][1]
 
-    if 0 <= new_row < field_rows and 0 <= new_col < field_cols:
-        if field[new_row][new_col] == '*':
-            continue
-        elif field[new_row][new_col] == "A":
-            if collected:
-                field[new_row][new_col] = "P"
-                field[init_player_position[0]][init_player_position[1]] = 'B'
-                player_position = [row, col]
-                if field[row][col] != "R":
-                    field[row][col] = '.'
-
-        elif field[new_row][new_col] == 'P':
-            field[new_row][new_col] = 'R'
-            player_position = [new_row, new_col]
-            if field[row][col] != "R":
-                field[row][col] = '.'
-    else:
-        cancelled = True
+    if not (0 <= new_row < field_rows and 0 <= new_col < field_cols):
+        print('The delivery is late. Order is canceled.')
+        field[init_player_position[0]][init_player_position[1]] = ' '
         break
 
-if cancelled:
-    field[init_player_position[0]][init_player_position[1]] = ' '
+    if field[new_row][new_col] == '*':
+        continue
 
-if collected:
-    print('Pizza is collected. 10 minutes for delivery.')
-    if delivered:
+    elif field[new_row][new_col] == '-' or field[new_row][new_col] == '.':
+        if field[row][col] != 'R':
+            field[row][col] = '.'
+        player_position = [new_row, new_col]
+        field[new_row][new_col] = 'B'
+        continue
+
+    elif field[new_row][new_col] == 'P':
+        print('Pizza is collected. 10 minutes for delivery.')
+        if field[row][col] != 'R':
+            field[row][col] = '.'
+        player_position = [new_row, new_col]
+        field[new_row][new_col] = 'R'
+        continue
+
+    elif field[new_row][new_col] == 'A':
         print('Pizza is delivered on time! Next order...')
-    elif cancelled:
-        print('The delivery is late. Order is canceled.')
-elif cancelled:
-    print('The delivery is late. Order is canceled.')
+        field[new_row][new_col] = 'P'
+        if field[row][col] != 'R':
+            field[row][col] = '.'
+        field[init_player_position[0]][init_player_position[1]] = 'B'
+        break
 
 for row in field:
-    print(f'{"".join(row)}')
+    print(''.join(row))
