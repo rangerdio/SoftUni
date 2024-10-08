@@ -1,6 +1,26 @@
-def accommodate_new_pets():
+def accommodate_new_pets(capacity, max_weight, *pet_data):
+    pets = {}
+    for pet_type, weight in pet_data:
+        if capacity > 0:
+            if weight > max_weight:
+                continue
+            else:
+                if pet_type not in pets:
+                    pets[pet_type] = 0
+                pets[pet_type] += 1
+                capacity -= 1
+        else:
+            break
 
-    return
+    if not pet_data:
+        result = f'All pets are accommodated! Available capacity: {capacity}.\n'
+    else:
+        result = 'You did not manage to accommodate all pets!\nAccommodated pets:\n'
+    sorted_pets = sorted(pets.items(), key=lambda x: x[0])
+    for pet_type, count in sorted_pets:
+        result += f'{pet_type}: {count}\n'
+
+    return result
 
 
 print(accommodate_new_pets(
