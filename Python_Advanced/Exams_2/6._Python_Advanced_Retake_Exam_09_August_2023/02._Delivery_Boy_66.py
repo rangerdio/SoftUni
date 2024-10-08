@@ -26,29 +26,31 @@ while True:
     new_row = row + directions[command][0]
     new_col = col + directions[command][1]
 
-    if 0 <= new_row < field_rows and 0 <= new_col < field_cols:
-        if field[new_row][new_col] == '*':
-            continue
-        elif field[new_row][new_col] == '-' or field[new_row][new_col] == '.':
-            player_position = [new_row, new_col]
-            field[new_row][new_col] = 'B'
-            if field[row][col] != 'R':
-                field[row][col] = '.'
-        elif field[new_row][new_col] == 'P':
-            print('Pizza is collected. 10 minutes for delivery.')
-            player_position = [new_row, new_col]
-            field[new_row][new_col] = 'R'
-            field[row][col] = '.'
-        elif field[new_row][new_col] == 'A':
-            print('Pizza is delivered on time! Next order...')
-            field[new_row][new_col] = 'P'
-            if field[row][col] != 'R':
-                field[row][col] = '.'
-            field[init_player_position[0]][init_player_position[1]] = 'B'
-            break
-    else:
+    if not 0 <= new_row < field_rows or not 0 <= new_col < field_cols:
         print('The delivery is late. Order is canceled.')
         field[init_player_position[0]][init_player_position[1]] = ' '
+        break
+
+    if field[new_row][new_col] == '*':
+        continue
+    elif field[new_row][new_col] == '-' or field[new_row][new_col] == '.':
+        player_position = [new_row, new_col]
+        field[new_row][new_col] = 'B'
+        if field[row][col] != 'R':
+            field[row][col] = '.'
+        continue
+    elif field[new_row][new_col] == 'P':
+        print('Pizza is collected. 10 minutes for delivery.')
+        player_position = [new_row, new_col]
+        field[new_row][new_col] = 'R'
+        field[row][col] = '.'
+        continue
+    elif field[new_row][new_col] == 'A':
+        print('Pizza is delivered on time! Next order...')
+        field[new_row][new_col] = 'P'
+        if field[row][col] != 'R':
+            field[row][col] = '.'
+        field[init_player_position[0]][init_player_position[1]] = 'B'
         break
 
 for row in field:
