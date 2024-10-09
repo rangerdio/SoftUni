@@ -1,16 +1,13 @@
 field_rows, field_cols = [int(x) for x in input().split()]
 field = []
-player_position = []
-init_player_position = []
-pizza_position = []
+row, col, init_row, init_col = 0, 0, 0, 0
+command = "r"
 
-for row in range(field_rows):
+for r in range(field_rows):
     line = list(input())
     if 'B' in line:
-        player_position = [row, line.index('B')]
-        init_player_position = [row, line.index('B')]
-    elif 'P' in line:
-        pizza_position = [row, line.index('P')]
+        row, col = [r, line.index('B')]
+        init_row, init_col = [r, line.index('B')]
     field.append(line)
 
 directions = {
@@ -20,38 +17,36 @@ directions = {
     "right": [0, 1]
 }
 
-while True:
+while command:
     command = input()
-    row, col = player_position
     new_row = row + directions[command][0]
     new_col = col + directions[command][1]
 
-    if not 0 <= new_row < field_rows or not 0 <= new_col < field_cols:
+    if not (0 <= new_row < field_rows and 0 <= new_col < field_cols):
         print('The delivery is late. Order is canceled.')
-        field[init_player_position[0]][init_player_position[1]] = ' '
+        field[init_row][init_col] = ' '
         break
 
     if field[new_row][new_col] == '*':
         continue
-    elif field[new_row][new_col] == '-' or field[new_row][new_col] == '.':
-        player_position = [new_row, new_col]
-        field[new_row][new_col] = 'B'
-        if field[row][col] != 'R':
-            field[row][col] = '.'
-        continue
-    elif field[new_row][new_col] == 'P':
-        print('Pizza is collected. 10 minutes for delivery.')
-        player_position = [new_row, new_col]
-        field[new_row][new_col] = 'R'
-        field[row][col] = '.'
-        continue
     elif field[new_row][new_col] == 'A':
         print('Pizza is delivered on time! Next order...')
         field[new_row][new_col] = 'P'
+        field[row][col] = '.'
+        field[init_row][init_col] = 'B'
+        row, col = new_row, new_col
+        break
+    elif field[new_row][new_col] == 'P':
+        print('Pizza is collected. 10 minutes for delivery.')
+        field[new_row][new_col] = 'R'
+        field[row][col] = '.'
+        row, col = new_row, new_col
+        continue
+    else:
+        field[new_row][new_col] = 'B'
         if field[row][col] != 'R':
             field[row][col] = '.'
-        field[init_player_position[0]][init_player_position[1]] = 'B'
-        break
+        row, col = new_row, new_col
 
 for row in field:
     print(f'{"".join(row)}')
