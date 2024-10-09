@@ -3,6 +3,7 @@ field = []
 player_position = []
 init_player_position = []
 pizza_position = []
+pizza = False
 
 for row in range(field_rows):
     line = list(input())
@@ -35,7 +36,7 @@ while True:
         continue
 
     elif field[new_row][new_col] == '-' or field[new_row][new_col] == '.':
-        if field[row][col] != 'R':
+        if field[row][col] != 'R' and field[row][col] != 'A':
             field[row][col] = '.'
         player_position = [new_row, new_col]
         field[new_row][new_col] = 'B'
@@ -43,19 +44,22 @@ while True:
 
     elif field[new_row][new_col] == 'P':
         print('Pizza is collected. 10 minutes for delivery.')
-        if field[row][col] != 'R':
+        if field[row][col] != 'R' and field[row][col] != 'A':
             field[row][col] = '.'
         player_position = [new_row, new_col]
         field[new_row][new_col] = 'R'
+        pizza = True
         continue
 
     elif field[new_row][new_col] == 'A':
-        print('Pizza is delivered on time! Next order...')
-        field[new_row][new_col] = 'P'
-        if field[row][col] != 'R':
-            field[row][col] = '.'
-        field[init_player_position[0]][init_player_position[1]] = 'B'
-        break
+        if pizza:
+            print('Pizza is delivered on time! Next order...')
+            field[new_row][new_col] = 'P'
+            if field[row][col] != 'R':
+                field[row][col] = '.'
+            field[init_player_position[0]][init_player_position[1]] = 'B'
+            break
+        player_position = [new_row, new_col]
 
 for row in field:
     print(''.join(row))
