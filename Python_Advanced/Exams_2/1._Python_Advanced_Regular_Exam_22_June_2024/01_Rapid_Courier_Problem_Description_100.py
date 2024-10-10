@@ -8,14 +8,14 @@ while packages and couriers:
     current_courier = couriers.popleft()
 
     if current_courier < current_package:
-        current_package -= current_courier
-        packages.append(current_package)
+        packages.append(current_package - current_courier)
+        total_weight += current_courier
     else:
         if current_courier > current_package:
             current_courier -= 2 * current_package
             if current_courier > 0:
                 couriers.append(current_courier)
-    total_weight += current_package
+        total_weight += current_package
 
 print(f'Total weight: {total_weight} kg')
 if not packages and not couriers:
