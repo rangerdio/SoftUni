@@ -1,5 +1,14 @@
 import os
 
+# Find all files in the directory and its subdirectories,
+# rename them and print the renaming process (remove the space and - in the names)
+
+r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+depth_level = 4
+# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_JavaScript\\'
+# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_Python\\'
+# r_dir = '.'
+
 
 def rename(root_dir, files, counter=1):
     if counter < 0:
@@ -30,9 +39,5 @@ def rename(root_dir, files, counter=1):
                 rename(path_current_element, counter - 1)
 
 
-r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
-# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_JavaScript\\'
-# r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_Python\\'
-# r_dir = '.'
 files_ = []
-rename(r_dir, 4)
+rename(r_dir, depth_level)
