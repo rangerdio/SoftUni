@@ -3,7 +3,7 @@ import os
 # Find all files in the directory and its subdirectories,
 # rename them and print the renaming process (remove the space and - in the names)
 
-r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\'
+r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Python_Advanced\\Exams\\'
 depth_level = 4
 # r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_JavaScript\\'
 # r_dir = 'G:\\My Drive\\Programming\\SoftUni\\Basics_with_Python\\'
