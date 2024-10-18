@@ -67,4 +67,5 @@ def wireshark_filtering(raw_data):
     return f'\n\nWireshark Filter:\n{wireshark_filter}\n'
  
 
-wireshark_filtering(editor.getText())
+result = wireshark_filtering(editor.getText())
+editor.appemdText(result)
