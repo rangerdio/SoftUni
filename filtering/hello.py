@@ -1,0 +1,1 @@
+editor.addText('Hello world')
