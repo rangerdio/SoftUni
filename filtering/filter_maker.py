@@ -13,6 +13,9 @@ def wireshark_filtering(raw_data):
     # cba40c793566499f SDb0gk602--SCP-vm-cdf-onenet-pbxip01-P-1726750859287-cafa118c_bq0 0010000000000E720EC664A5E0000-FF \
     # 0010000000000E120EC66495E0000-FF 0010000000000E720EC664A5E0000-FF 0300010000000000F920EC664F5E0000 \
     # 0300010000000000F920EC664FGE0000'.replace(',', ' ')
+    if not raw_data:
+
+        return "\nNo data to create Wireshark Filter. Exit...\n"
 
     raw_data_list = raw_data.split()
     sip_ids, csta_ids, csta_ids_2nd, mgcp_ids = [], [], [], []
@@ -61,7 +64,7 @@ def wireshark_filtering(raw_data):
 
     wireshark_filter = ' or '.join(transform_sip(sip_ids) + transform_csta(csta_ids) +
                                    transform_csta_2nd(csta_ids_2nd) + transform_mgcp_ids(mgcp_ids))
-    return wireshark_filter
+    return f'\n\nWireshark Filter:\n{wireshark_filter}\n'
 
 
-wireshark_filtering(input())
+wireshark_filtering(editor.getText())
