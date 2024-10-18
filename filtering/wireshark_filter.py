@@ -48,5 +48,4 @@ def wireshark_filtering(raw_data):
     return wireshark_filter
 
 
-# Assuming 'editor' exists in your environment and works as intended
 editor.appendText(wireshark_filtering(editor.getText()))
