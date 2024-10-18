@@ -1,5 +1,6 @@
 
 def wireshark_filtering(raw_data):
+    wireshark_filter = '\n\n'
     # Raw data as it is expected in text file.
     # Contains
     #   MGCP transid's numeric data with 9 digits.
@@ -14,8 +15,8 @@ def wireshark_filtering(raw_data):
     # 0010000000000E120EC66495E0000-FF 0010000000000E720EC664A5E0000-FF 0300010000000000F920EC664F5E0000 \
     # 0300010000000000F920EC664FGE0000'.replace(',', ' ')
     if not raw_data:
-
-        return "\nNo data to create Wireshark Filter. Exit...\n"
+        wireshark_filter += "No data to create Wireshark Filter. Exit..."
+        return wireshark_filter
 
     raw_data_list = raw_data.split()
     sip_ids, csta_ids, csta_ids_2nd, mgcp_ids = [], [], [], []
@@ -53,7 +54,7 @@ def wireshark_filtering(raw_data):
         return transformed_mgcp_ids
 
     for element in raw_data_list:
-        if element.isnumeric() and len(element) == 7:
+        if element.isdigit() and len(element) == 7:
             mgcp_ids.append(element)
         elif element.endswith('-FF') and '000000000' in element:
             csta_ids.append(element)
@@ -64,8 +65,8 @@ def wireshark_filtering(raw_data):
 
     wireshark_filter = ' or '.join(transform_sip(sip_ids) + transform_csta(csta_ids) +
                                    transform_csta_2nd(csta_ids_2nd) + transform_mgcp_ids(mgcp_ids))
-    return f'\n\nWireshark Filter:\n{wireshark_filter}\n'
- 
+    wireshark_filter += 'Wireshark Filter: \n'
+    return wireshark_filter
 
 result = wireshark_filtering(editor.getText())
-editor.appemdText(result)
+editor.appendText(result)
