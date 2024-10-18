@@ -15,7 +15,7 @@ def wireshark_filtering(raw_data):
     # 0300010000000000F920EC664FGE0000'.replace(',', ' ')
     if not raw_data:
 
-        return editor.addText("\nNo data to create Wireshark Filter. Exit...\n")
+        return "\nNo data to create Wireshark Filter. Exit...\n"
 
     raw_data_list = raw_data.split()
     sip_ids, csta_ids, csta_ids_2nd, mgcp_ids = [], [], [], []
@@ -64,7 +64,7 @@ def wireshark_filtering(raw_data):
 
     wireshark_filter = ' or '.join(transform_sip(sip_ids) + transform_csta(csta_ids) +
                                    transform_csta_2nd(csta_ids_2nd) + transform_mgcp_ids(mgcp_ids))
-    return editor.addText(f'\n\nWireshark Filter:\n{wireshark_filter}\n')
-
+    return f'\n\nWireshark Filter:\n{wireshark_filter}\n'
+ 
 
 wireshark_filtering(editor.getText())
