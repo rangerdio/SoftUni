@@ -6,7 +6,7 @@ seconds = deque([int(x) for x in input().split(', ')])
 counter = 0
 seated = []
 
-while firsts and seconds:
+while True:
     counter += 1
     first = firsts.popleft()
     second = seconds.pop()
@@ -14,8 +14,11 @@ while firsts and seconds:
     if str(first) + char in seats or str(second) + char in seats:
         if str(first) + char in seats and str(second) + char not in seated:
             seated.append(str(first) + char)
+            seats.remove(str(first) + char)
         if str(second) + char in seats and str(second) + char not in seated:
             seated.append(str(second) + char)
+            seats.remove(str(second) + char)
+
     else:
         firsts.append(first)
         seconds.appendleft(second)
