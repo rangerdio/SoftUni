@@ -11,8 +11,10 @@ class SteamUser:
         return f'{self.username} is playing {game}'
 
     def buy_game(self, game):
-        if game not in self.games:
-            return '{game} is already in your library'
+        # print(self.games)
+        # print(game)
+        if game in self.games:
+            return f'{game} is already in your library'
         self.games.append(game)
         return f'{self.username} bought {game}'
 
