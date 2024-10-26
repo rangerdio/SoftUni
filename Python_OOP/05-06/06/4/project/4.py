@@ -27,12 +27,9 @@ class PizzaDelivery:
             return f'Wrong ingredient selected! We do not use {ingredient} in {self.name}!'
         if self.ingredients[ingredient] < quantity:
             return f'Please check again the desired quantity of {ingredient}!'
-        if self.ingredients[ingredient] > quantity:
-            self.ingredients[ingredient] -= quantity
-            self.price -= quantity * price_per_quantity
-        else:
-            del self.ingredients[ingredient]
-            self.price -= quantity * price_per_quantity
+
+        self.price -= quantity * price_per_quantity
+        self.ingredients[ingredient] -= quantity
 
     def make_order(self) -> str:
         self.ordered = True
