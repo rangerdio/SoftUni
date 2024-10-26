@@ -1,5 +1,5 @@
 class Task:
-    def __init__(self, name:str, due_date: str) -> None:
+    def __init__(self, name: str, due_date: str) -> None:
         self.name = name
         self.due_date = due_date
         self.comments = []
