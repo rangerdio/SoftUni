@@ -15,15 +15,11 @@ class Time:
         return f'{self.hours:02}:{self.minutes:02}:{self.seconds:02}'
 
     def next_second(self):
-        second = 1
-        if self.seconds + 1 == 60:
-            self.seconds = 0
-            self.minutes += 1
-            if self.minutes == 60:
-                self.minutes = 0
-                self.hours += 1
-                if self.hours == 24:
-                    self.hours = 0
+        next_total_seconds = self.hours * 3600 + self.minutes * 60 + self.seconds + 1
+        self.hours = (next_total_seconds // 3600) % (self.max_hours + 1)
+        print(f'({next_total_seconds} // {3600}) :{next_total_seconds // 3600}   ({next_total_seconds} // {3600}) % ({self.max_hours + 1}) :{(next_total_seconds // 3600) % (self.max_hours + 1)}')
+        self.minutes = (next_total_seconds // 60) % (self.max_minutes + 1)
+        self.seconds = next_total_seconds % (self.max_seconds + 1)
         return Time.get_time(self)
 
 
