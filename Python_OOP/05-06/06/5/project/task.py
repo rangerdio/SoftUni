@@ -23,9 +23,9 @@ class Task:
     def edit_comment(self, comment_number: int, new_comment: str) -> str:
         try:
             self.comments[comment_number] = new_comment
-            # return f'{", ".join(self.comments)}'
         except IndexError:
             return 'Cannot find comment.'
+        return f'{", ".join(self.comments)}'
 
     def details(self) -> str:
         return f'Name: {self.name} - Due Date: {self.due_date}'
