@@ -25,7 +25,5 @@ class Guild:
 
     def guild_info(self) -> str:
         result = f"Guild: {self.name}\n"
-
-        for current_player in self.members:
-            result += '\n'.join(current_player.player_info() for current_player in self.members)
+        result += '\n'.join(current_player.player_info() for current_player in self.members)
         return result
