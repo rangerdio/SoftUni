@@ -21,7 +21,7 @@ class Section:
         #     return f'Task {task_name} is not found in the section {self.name}'
         task_to_complete = next((current_task for current_task in self.tasks if current_task.name == task_name), None)
         if task_to_complete:
-            task_to_complete[0].completed = True
+            task_to_complete.completed = True
             return f'Completed task {task_name}'
         else:
             return f'Task {task_name} is not found in the section {self.name}'
@@ -42,4 +42,3 @@ class Section:
         for current_task in self.tasks:
             result += f'\n{current_task.details()}'
         return result
-
