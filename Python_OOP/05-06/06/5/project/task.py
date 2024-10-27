@@ -9,13 +9,13 @@ class Task:
         if self.name == new_name:
             return 'Name cannot be the same.'
         self.name = new_name
-        return f'{self.name}'
+        return self.name
 
     def change_due_date(self, new_date: str) -> str:
         if self.due_date == new_date:
             return 'Date cannot be the same.'
         self.due_date = new_date
-        return f'{self.due_date}'
+        return self.due_date
 
     def add_comment(self, comment: str) -> None:
         self.comments.append(comment)
