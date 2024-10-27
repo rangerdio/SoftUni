@@ -7,7 +7,10 @@ class Player:
         self.guild = "Unaffiliated"
 
     def add_skill(self, skill_name: str, mana_cost: int) -> str:
-        pass
+        if skill_name not in self.skills.items():
+            self.skills[skill_name] = mana_cost
+            return f'Skill {skill_name} added to the collection of the player {self.name}'
+        return 'Skill already added'
 
     def player_info(self) -> str:
         sdata = "\n".join(f'==={skill_name} - {skill_mana_cost}' for skill_name, skill_mana_cost in self.skills.items())
