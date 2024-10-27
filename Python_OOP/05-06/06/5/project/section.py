@@ -22,7 +22,7 @@ class Section:
         task_to_complete = next((current_task for current_task in self.tasks if current_task.name == task_name), None)
         if task_to_complete:
             task_to_complete.completed = True
-            return f'Completed task {task_name}'
+            return f'Completed task {task_to_complete.name}'
         else:
             return f'Task {task_name} is not found in the section {self.name}'
 
@@ -37,8 +37,5 @@ class Section:
         return f'Cleared {total - len(self.tasks)} tasks.'
 
     def view_section(self) -> str:
-        result = ''
-        result += f'Section {self.name}:'
-        for current_task in self.tasks:
-            result += f'\n{current_task.details()}'
-        return result
+        details = "\n".join(current_task.details() for current_task in self.tasks)
+        return f'Section {self.name}:\n{details}'
