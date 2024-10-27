@@ -16,7 +16,7 @@ class Guild:
         return f"Welcome player {player.name} to the guild {self.name}"
 
     def kick_player(self, player_name: str) -> str:
-        player = next((p for p in self.players if p.guild == player_name), None)
+        player = next((p for p in self.players if p.name == player_name), None)
         if not player:
             return f'Player {player_name} is not in the guild.'
         player_name.guild = 'Unaffiliated'
