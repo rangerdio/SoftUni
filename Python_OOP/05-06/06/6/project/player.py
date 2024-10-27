@@ -13,5 +13,9 @@ class Player:
         return 'Skill already added'
 
     def player_info(self) -> str:
-        sdata = "\n".join(f'==={skill_name} - {skill_mana_cost}' for skill_name, skill_mana_cost in self.skills.items())
-        return f'Name: {self.name}\nGuild: {self.guild}\nHP: {self.hp}\nMP: {self.mp}\n{sdata}'
+        # dat = "\n".join(f'==={skill_name} - {skill_mana_cost}' for skill_name, skill_mana_cost in self.skills.items())
+        # return f'Name: {self.name}\nGuild: {self.guild}\nHP: {self.hp}\nMP: {self.mp}\n{dat}'
+        result = [f'Name: {self.name}', f'Guild: {self.guild}', f'HP: {self.hp}', f'MP: {self.mp}']
+        for skill_name, skill_mana_cost in self.skills.items():
+            result.append(f'=== {skill_name} - {skill_mana_cost}')
+        return '\n'.join(result)
