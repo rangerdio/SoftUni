@@ -3,14 +3,14 @@ class Player:
         self.name = name
         self.hp = hp
         self.mp = mp
-        self.skills: dict = {}
+        self.skills: dict[str, int] = {}
         self.guild = "Unaffiliated"
 
     def add_skill(self, skill_name: str, mana_cost: int) -> str:
-        if skill_name not in self.skills.items():
-            self.skills[skill_name] = mana_cost
-            return f'Skill {skill_name} added to the collection of the player {self.name}'
-        return 'Skill already added'
+        if skill_name in self.skills.items():
+            return 'Skill already added'
+        self.skills[skill_name] = mana_cost
+        return f'Skill {skill_name} added to the collection of the player {self.name}'
 
     def player_info(self) -> str:
         # dat = "\n".join(f'==={skill_name} - {skill_mana_cost}' for skill_name, skill_mana_cost in self.skills.items())
