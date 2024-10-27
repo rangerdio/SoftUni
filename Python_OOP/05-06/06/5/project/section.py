@@ -22,9 +22,9 @@ class Section:
         task_to_complete = next((current_task for current_task in self.tasks if current_task.name == task_name), None)
         if task_to_complete:
             task_to_complete.completed = True
-            return f'Completed task {task_to_complete.name}'
+            return f'Completed task {task_name}'
         else:
-            return f'Task {task_name} is not found in the section {self.name}'
+            return f'Could not find task with the name {task_name}'
 
     def clean_section(self) -> str:
         total = len(self.tasks)
