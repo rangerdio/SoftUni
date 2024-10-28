@@ -36,4 +36,4 @@ class Album:
     def details(self) -> str:
         details = f'Album {self.name}\n'
         song_info = [song.get_info() for song in self.songs]
-        return details + '\n'.join(song_info)
+        return details + '\n== '.join(song_info)
