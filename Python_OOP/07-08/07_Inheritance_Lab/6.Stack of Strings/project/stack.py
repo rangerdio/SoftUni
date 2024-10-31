@@ -15,7 +15,7 @@ class Stack:
         return len(self.data) == 0
 
     def __str__(self) -> str:
-        return '[' + ', '.join(element for element in self.data[::-1]) + ']'
+        return '[' + ', '.join(self.data[::-1]) + ']'
         # return f'{self.data}'
 
 
