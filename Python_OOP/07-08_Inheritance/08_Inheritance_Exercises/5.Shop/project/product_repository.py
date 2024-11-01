@@ -8,15 +8,15 @@ class ProductRepository:
     def add(self, product: Product) -> None:
         self.products.append(product)
 
-    def find(self, product_name: str):
+    def find(self, product_name: str) -> Product:
         for p in self.products:
             if p.name == product_name:
                 return p
 
     def remove(self, product_name):
-        for p in self.products:
-            if p.name == product_name:
-                return self.products.remove(p)
+        p = self.find(product_name)
+        if p:
+            self.products.remove(p)
 
     def __repr__(self):
         result = []
