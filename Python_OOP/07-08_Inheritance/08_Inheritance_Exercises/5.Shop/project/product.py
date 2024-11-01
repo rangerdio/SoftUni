@@ -11,4 +11,4 @@ class Product:
         self.quantity += quantity
 
     def __repr__(self) -> str:
-        return self.name            # not sure what does this mean
+        return self.name
