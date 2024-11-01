@@ -6,7 +6,7 @@ class Vehicle:
         self.horse_power = horse_power
         self.fuel_consumption = self.DEFAULT_FUEL_CONSUMPTION
 
-    def drive(self, kilometers: int):
+    def drive(self, kilometers: int) -> None:
         fuel_needed = kilometers * self.fuel_consumption
         if self.fuel >= fuel_needed:
             self.fuel -= fuel_needed
