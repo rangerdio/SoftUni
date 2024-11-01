@@ -3,7 +3,6 @@ from project.product import Product
 
 class ProductRepository:
     def __init__(self):
-
         self.products: list[Product] = []
 
     def add(self, product: Product) -> None:
