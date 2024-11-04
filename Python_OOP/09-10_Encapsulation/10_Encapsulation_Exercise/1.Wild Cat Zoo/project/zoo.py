@@ -29,11 +29,11 @@ class Zoo:
         return f'{worker.name} the {worker.__class__.__name__} hired successfully'
 
     def fire_worker(self, worker_name):
-        w = [worker for worker in self.workers if worker.name == worker_name][0]
+        w = [worker for worker in self.workers if worker.name == worker_name]
         if not w:
             return f'There is no {worker_name} in the zoo'
-        self.workers.remove(w)
-        return f'{w.name} fired successfully'
+        self.workers.remove(w[0])
+        return f'{w[0].name} fired successfully'
 
     def pay_workers(self):
         total_salary = sum([worker.salary for worker in self.workers])
