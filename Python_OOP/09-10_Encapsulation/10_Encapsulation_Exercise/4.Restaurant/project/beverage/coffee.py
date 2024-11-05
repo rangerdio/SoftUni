@@ -1,7 +1,7 @@
 from project.beverage.hot_beverage import HotBeverage
 
 
-class Coffe(HotBeverage):
+class Coffee(HotBeverage):
     MILLILITERS = 50
     PRICE = 3.50
 
