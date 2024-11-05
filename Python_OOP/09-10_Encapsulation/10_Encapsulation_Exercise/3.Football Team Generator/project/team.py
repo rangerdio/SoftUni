@@ -17,6 +17,6 @@ class Team:
         try:
             player = [p for p in self.__players if p.name == player_name][0]
             self.__players.remove(player)
-            return str(player)
+            return player
         except IndexError:
             return f'Player {player_name} not found'
