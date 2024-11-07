@@ -11,7 +11,7 @@ class Shop:
         return sum(self.items.values())
 
     @classmethod
-    def small_shop(cls, name: str, type: str):
+    def small_shop(cls, name: str, type: str) -> "Shop":
         return cls(name, type, 10)
 
     def add_item(self, item_name: str):
