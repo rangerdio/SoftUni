@@ -6,7 +6,6 @@ class Hotel:
     def __init__(self, name: str) -> None:
         self.name = name
         self.rooms: list[Room] = []
-        self.guests: int = 0
 
     @classmethod
     def from_stars(cls, stars_count: int):
@@ -17,19 +16,11 @@ class Hotel:
 
     def take_room(self, room_number: int, people: int) -> Optional[Union[str, None]]:
         room = [r for r in self.rooms if r.number == room_number][0]
-        # return room.take_room(people)
-        result = room.take_room(people)
-        if not result:
-            self.guests += people
-            return result
+        return room.take_room(people)
 
     def free_room(self, room_number) -> Optional[Union[str, None]]:
         room = [r for r in self.rooms if r.number == room_number][0]
-        # return room.free_room()
-        result = room.free_room()
-        if not result:
-            self.guests -= room.guests
-            return result
+        return room.free_room()
 
     def status(self):
         result = [f'Hotel {self.name} has {self.guests} total guests']
@@ -44,6 +35,6 @@ class Hotel:
         result.append(f'Taken rooms: {", ".join(str(n) for n in taken_rooms)}')
         return '\n'.join(result)
 
-    # @property
-    # def guests(self):
-    #     return sum(room.guests for room in self.rooms)
+    @property
+    def guests(self):
+        return sum(room.guests for room in self.rooms)
