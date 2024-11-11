@@ -10,7 +10,7 @@ class Customer:
 
     @staticmethod
     def get_next_id() -> int:
-        return Customer.counter
+        return Customer.customer_id_counter
 
     def __repr__(self):
         return f'Customer <{self.id}> {self.name}; Address: {self.address}; Email: {self.email}'
