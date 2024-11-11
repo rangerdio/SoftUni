@@ -1,15 +1,15 @@
 class Customer:
-    counter = 1
+    customer_id_counter = 1
 
-    def __init__(self, name: str, address: str, email: str):
+    def __init__(self, name: str, address: str, email: str) -> None:
         self.name = name
         self.address = address
         self.email = email
-        self.id = Customer.counter
-        Customer.counter += 1
+        self.id = Customer.customer_id_counter
+        Customer.customer_id_counter += 1
 
     @staticmethod
-    def get_next_id():
+    def get_next_id() -> int:
         return Customer.counter
 
     def __repr__(self):
