@@ -30,7 +30,7 @@ class Gym:
 
     def subscription_info(self, subscription_id: int):
         subscription = [sub for sub in self.subscriptions if sub.id == subscription_id][0]
-        customer_id, trainer_id = subscription.trainer_id, subscription.trainer_id
+        customer_id, trainer_id = subscription.customer_id, subscription.trainer_id
         customer = [cust for cust in self.customers if cust.id == customer_id][0]
         trainer = [tr for tr in self.trainers if tr.id == trainer_id][0]
         plan = [pl for pl in self.plans if pl.trainer_id == trainer_id][0]
