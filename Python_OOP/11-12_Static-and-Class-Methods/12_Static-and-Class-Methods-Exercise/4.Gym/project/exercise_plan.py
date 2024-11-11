@@ -15,6 +15,7 @@ class ExercisePlan:
 
     @staticmethod
     def get_next_id() -> int:
+
         return ExercisePlan.id
 
     def __repr__(self):
