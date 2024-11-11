@@ -1,14 +1,12 @@
-class Equipment:
-    id = 1
+from project.id_mixin import IDMixin
+
+
+class Equipment(IDMixin):
 
     def __init__(self, name: str) -> None:
         self.name = name
-        self.id = Equipment.id
-        Equipment.id += 1
-
-    @staticmethod
-    def get_next_id() -> int:
-        return Equipment.id
+        self.id = self.get_next_id()
+        self.increment_id()
 
     def __repr__(self):
         return f'Equipment <{self.id}> {self.name}'
