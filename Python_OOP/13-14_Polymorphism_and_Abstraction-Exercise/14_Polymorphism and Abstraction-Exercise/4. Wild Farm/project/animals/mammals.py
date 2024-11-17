@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
 
 
-class Food(ABC):
+class Mammals(ABC):
     pass
