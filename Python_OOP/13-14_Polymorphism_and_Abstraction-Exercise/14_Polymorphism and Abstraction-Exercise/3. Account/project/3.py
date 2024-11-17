@@ -5,22 +5,20 @@ class Account:
         self._transactions: list = []
 
     def handle_transaction(self, transaction_amount: int) -> str:
-        to_handle = self.amount + transaction_amount
-        if to_handle >= 0:
-            self.amount = to_handle
-            self._transactions.append(transaction_amount)
-            return f'New balance: {self.amount}'
-        else:
+        new_balance = self.balance + transaction_amount
+        if new_balance < 0:
             raise ValueError('sorry cannot go in debt!')
+        self._transactions.append(transaction_amount)
+        return f'New balance: {new_balance}'
 
     def add_transaction(self, amount: int) -> str:
-        if isinstance(amount, int):
-            return self.handle_transaction(amount)
-        else:
+        if not isinstance(amount, int):
             raise ValueError('please use int for amount')
+        return self.handle_transaction(amount)
 
-    def balance(self):
-        return sum(self._transactions) + self.amount
+    @property
+    def balance(self) -> int:
+        return self.amount + sum(self._transactions)
 
     def __str__(self):
         return f"Account of {self.owner} with starting amount: {self.amount}"
@@ -30,6 +28,40 @@ class Account:
 
     def __len__(self):
         return len(self._transactions)
+
+    def __iter__(self):
+        return iter(self._transactions)
+
+    def __getitem__(self, index: int):
+        return self._transactions[index]
+
+    def __reversed__(self):
+        return reversed(self._transactions)
+
+    def __gt__(self, other):
+        return self.balance > other.balance
+
+    def __ge__(self, other):
+        return self.balance >= other.balance
+
+    def __eq__(self, other):
+        return self.balance == other.balance
+
+    def __lt__(self, other):
+        return self.balance < other.balance
+
+    def __le__(self, other):
+        return self.balance <= other.balance
+
+    def __ne__(self, other):
+        return self.balance != other.balance
+
+    def __add__(self, other):
+        new_owner = f"{self.owner}&{other.owner}"
+        new_amount = int(self.amount) + int(other.amount)
+        new_account = Account(new_owner, new_amount)
+        new_account._transactions = self._transactions + other._transactions
+        return new_account
 
 
 acc = Account('bob', 10)
@@ -41,3 +73,19 @@ acc.add_transaction(-20)
 acc.add_transaction(30)
 print(acc.balance)
 print(len(acc))
+for transaction in acc:
+    print(transaction)
+
+print(acc[1])
+print(list(reversed(acc)))
+acc2.add_transaction(10)
+acc2.add_transaction(60)
+print(acc > acc2)
+print(acc >= acc2)
+print(acc < acc2)
+print(acc <= acc2)
+print(acc == acc2)
+print(acc != acc2)
+acc3 = acc + acc2
+print(acc3)
+print(acc3._transactions)
