@@ -2,14 +2,13 @@ class Account:
     def __init__(self, owner: str, amount: int = 0):
         self.owner = owner
         self.amount = amount
-        self._transactions: list = []
+        self._transactions: list[int] = []
 
     def handle_transaction(self, transaction_amount: int) -> str:
-        new_balance = self.balance + transaction_amount
-        if new_balance < 0:
+        if self.balance + transaction_amount < 0:
             raise ValueError('sorry cannot go in debt!')
         self._transactions.append(transaction_amount)
-        return f'New balance: {new_balance}'
+        return f'New balance: {self.balance}'
 
     def add_transaction(self, amount: int) -> str:
         if not isinstance(amount, int):
@@ -38,25 +37,16 @@ class Account:
     def __reversed__(self):
         return reversed(self._transactions)
 
-    def __gt__(self, other):
+    def __gt__(self, other: "Account"):
         return self.balance > other.balance
 
-    def __ge__(self, other):
+    def __ge__(self, other: "Account"):
         return self.balance >= other.balance
 
-    def __eq__(self, other):
+    def __eq__(self, other: "Account"):
         return self.balance == other.balance
 
-    def __lt__(self, other):
-        return self.balance < other.balance
-
-    def __le__(self, other):
-        return self.balance <= other.balance
-
-    def __ne__(self, other):
-        return self.balance != other.balance
-
-    def __add__(self, other):
+    def __add__(self, other: "Account"):
         new_owner = f"{self.owner}&{other.owner}"
         new_amount = int(self.amount) + int(other.amount)
         new_account = Account(new_owner, new_amount)
