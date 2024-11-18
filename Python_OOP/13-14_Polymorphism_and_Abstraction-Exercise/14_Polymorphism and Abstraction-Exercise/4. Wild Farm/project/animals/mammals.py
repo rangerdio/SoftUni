@@ -47,7 +47,7 @@ class Cat(Mammal):
 class Tiger(Mammal):
     @staticmethod
     def make_sound() -> str:
-        return "Meow"
+        return "ROAR!!!"
 
     @property
     def allowed_food(self) -> [Food]:
@@ -55,4 +55,4 @@ class Tiger(Mammal):
 
     @property
     def bite_weight(self):
-        return 1
+        return 1.00
