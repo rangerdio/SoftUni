@@ -27,7 +27,7 @@ class FormulaTeam(ABC):
         revenue = 0
         for sponsor in sponsors.values():
             for place, prize in sponsor.items():
-                if place <= race_pos:
+                if race_pos <= place:
                     revenue += prize
                     break
         revenue -= expenses
