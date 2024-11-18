@@ -1,5 +1,3 @@
-from abc import ABC, abstractmethod
-
 from project.animals.animal import Mammal
 from project.food import Food, Meat, Vegetable, Fruit
 
@@ -13,6 +11,7 @@ class Mouse(Mammal):
     def allowed_food(self) -> [Food]:
         return [Vegetable, Fruit]
 
+    @property
     def bite_weight(self):
         return 0.10
 
@@ -22,6 +21,7 @@ class Dog(Mammal):
     def make_sound() -> str:
         return "Woof!"
 
+    @property
     def bite_weight(self):
         return 0.40
 
@@ -39,6 +39,7 @@ class Cat(Mammal):
     def allowed_food(self) -> [Food]:
         return [Vegetable, Meat]
 
+    @property
     def bite_weight(self):
         return 0.30
 
@@ -52,5 +53,6 @@ class Tiger(Mammal):
     def allowed_food(self) -> [Food]:
         return [Meat]
 
+    @property
     def bite_weight(self):
         return 1
