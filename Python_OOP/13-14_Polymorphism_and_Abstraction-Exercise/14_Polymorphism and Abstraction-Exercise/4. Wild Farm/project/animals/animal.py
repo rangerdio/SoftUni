@@ -28,8 +28,8 @@ class Animal(ABC):
     def feed(self, food: Food) -> Optional[Union[str, None]]:
         if type(food) not in self.allowed_food:
             return f"{self.__class__.__name__} does not eat {food.__class__.__name__}!"
-        self.food_eaten += 1
         self.weight += food.quantity * self.bite_weight
+        self.food_eaten += food.quantity
 
 
 class Bird(Animal, ABC):
