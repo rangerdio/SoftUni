@@ -29,5 +29,3 @@ class Hen(Bird):
     def bite_weight(self):
         return 0.35
 
-    def __repr__(self):
-        return f"{self.__class__.__name__} [{self.name}, {self.wing_size}, {self.weight}, {self.food_eaten}]"

@@ -54,6 +54,3 @@ class Tiger(Mammal):
 
     def bite_weight(self):
         return 1
-
-    def __repr__(self):
-        return f"{self.__class__.__name__} [{self.name}, {self.weight}, {self.living_region}]"
