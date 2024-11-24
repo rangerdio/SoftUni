@@ -1,8 +1,6 @@
 def genrange(start: int, end: int):
-    k = start
-    while k <= end:
+    for k in range(start, end +1):
         yield k
-        k += 1
 
 
 print(list(genrange(1, 10)))
