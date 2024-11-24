@@ -8,12 +8,9 @@ class sequence_repeat:
         return self
 
     def __next__(self):
-        self.index += 1
-        if self.index >= len(self.sequence):
-            self.index = 0
-
         if self.number <= 0:
             raise StopIteration
+        self.index = (self.index + 1) % len(self.sequence)
         self.number -= 1
         return self.sequence[self.index]
 
