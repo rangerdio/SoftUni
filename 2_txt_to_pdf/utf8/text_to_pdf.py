@@ -2,6 +2,7 @@ import os
 import chardet
 from fpdf import FPDF
 
+
 # Encoding Conversion Functions
 def convert_file_to_utf8(input_file_path, output_file_path):
     """Convert a text file from its original encoding to UTF-8."""
@@ -18,6 +19,7 @@ def convert_file_to_utf8(input_file_path, output_file_path):
 
     # Log the creation of the new UTF-8 file
     print(f"[INFO] Created new UTF-8 file: {output_file_path}")
+
 
 def convert_files_to_utf8():
     """Convert all .txt files in 'text_files' to UTF-8 and save them in 'utf8'."""
