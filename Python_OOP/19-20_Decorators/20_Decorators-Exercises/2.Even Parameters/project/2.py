@@ -1,14 +1,9 @@
 def even_parameters(function):
     def wrapper(*args):
         is_even = True
-        for element in args:
-            if isinstance(element, int) and element % 2 != 0:
-                is_even = False
-                break
-        if is_even:
-            return function(*args)
-        else:
+        if any(not isinstance(element, int) or element % 2 != 0 for element in args):
             return 'Please use only even numbers!'
+        return function(*args)
 
     return wrapper
 
