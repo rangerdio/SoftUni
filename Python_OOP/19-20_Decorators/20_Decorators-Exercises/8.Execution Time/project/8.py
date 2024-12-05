@@ -1,5 +1,13 @@
+import time
+
+
 def exec_time(function):
-    pass
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = function(*args, **kwargs)
+        end_time = time.time()
+        return end_time - start_time
+    return wrapper
 
 
 @exec_time
@@ -11,7 +19,6 @@ def loop(start, end):
 
 
 print(loop(1, 10000000))
-print('=============================================')
 
 
 @exec_time
@@ -23,7 +30,6 @@ def concatenate(strings):
 
 
 print(concatenate(["a" for i in range(1000000)]))
-print('=============================================')
 
 
 @exec_time
