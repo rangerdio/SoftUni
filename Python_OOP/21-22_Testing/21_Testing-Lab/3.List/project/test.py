@@ -73,22 +73,55 @@ class IntegerListTests(TestCase):
         self.assertEqual(len(self.nums_list.get_data()), 2)
 
     def test_get_valid_index(self):
+        self.assertEqual(len(self.nums_list.get_data()), 2)
         value = self.nums_list.get_data()[0]
         self.assertEqual(value, 1)
-        self.assertEqual(len(self.nums_list.get_data()), 2)
 
         ss = self.nums_list.get(0)
         self.assertEqual(ss, value)
         self.assertEqual(len(self.nums_list.get_data()), 2)
 
     def test_insert_index_raise_err(self):
-        ...
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+        with self.assertRaises(IndexError) as err:
+            self.nums_list.insert(2, 101)
+
+        self.assertEqual(str(err.exception), "Index is out of range")
+
+        with self.assertRaises(IndexError) as err:
+            self.nums_list.insert(3, 101)
+
+        self.assertEqual(str(err.exception), "Index is out of range")
+
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+    def test_insert_invalid_value_raise(self):
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+        with self.assertRaises(ValueError) as err:
+            self.nums_list.insert(0, 'koiko')
+        self.assertEqual(str(err.exception), "Element is not Integer")
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+        self.assertEqual(self.nums_list.get(0), 1)
+
+    def test_insert_valid_data(self):
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+        self.assertEqual(self.nums_list.get(0), 1)
+        self.nums_list.insert(0, 101)
+        self.assertEqual(len(self.nums_list.get_data()), 3)
+        self.assertEqual(self.nums_list.get(0), 101)
 
     def test_get_biggest(self):
         self.assertEqual(self.nums_list.get_data(), [1, 2])
         self.assertEqual(self.nums_list.get_biggest(), 2)
         self.assertEqual(self.nums_list.get_data(), [1, 2])
 
+    # def test_get_index_non_existing_element_raises(self):
+
+    def test_get_index(self):
+        self.assertEqual(self.nums_list.get_data(), [1, 2])
+        self.assertEqual(self.nums_list.get_index(1), 0)
+        self.assertEqual(self.nums_list.get_index(2), 1)
 
 
 if __name__ == '__main__':
