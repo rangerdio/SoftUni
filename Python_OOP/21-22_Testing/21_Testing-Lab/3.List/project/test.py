@@ -57,6 +57,39 @@ class IntegerListTests(TestCase):
         self.assertEqual(ss, value)
         self.assertEqual(len(self.nums_list.get_data()), 1)
 
+    def test_get_by_index_raise_error(self):
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+        with self.assertRaises(IndexError) as err:
+            self.nums_list.get(2)
+
+        self.assertEqual(str(err.exception), "Index is out of range")
+
+        with self.assertRaises(IndexError) as err:
+            self.nums_list.get(3)
+
+        self.assertEqual(str(err.exception), "Index is out of range")
+
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+    def test_get_valid_index(self):
+        value = self.nums_list.get_data()[0]
+        self.assertEqual(value, 1)
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+        ss = self.nums_list.get(0)
+        self.assertEqual(ss, value)
+        self.assertEqual(len(self.nums_list.get_data()), 2)
+
+    def test_insert_index_raise_err(self):
+        ...
+
+    def test_get_biggest(self):
+        self.assertEqual(self.nums_list.get_data(), [1, 2])
+        self.assertEqual(self.nums_list.get_biggest(), 2)
+        self.assertEqual(self.nums_list.get_data(), [1, 2])
+
+
 
 if __name__ == '__main__':
     main()
