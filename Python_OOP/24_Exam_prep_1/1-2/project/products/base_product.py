@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseProduct(ABC):
     def __init__(self, model: str, price: float, material: str, sub_type: str):
         if len(model.strip()) < 3:
