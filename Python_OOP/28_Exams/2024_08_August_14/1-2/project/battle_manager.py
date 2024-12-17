@@ -49,6 +49,15 @@ class BattleManager:
         zone.volume -= 1
         return f"Ship {ship.name} successfully participated in zone {zone.code}."
 
+    def remove_battleship(self, ship_name: str):
+        ship = next((s for s in self.ships if s.name == ship_name), None)
+        if not ship:
+            return "No ship with this name!"
+        if not ship.is_available:
+            return "The ship participates in zone battles! Removal is impossible!"
+        self.ships.remove(ship)
+        return f"Successfully removed ship {ship_name}."
+
     def start_battle(self, zone: BaseZone):
         attackers = [s for s in zone.ships if s.is_attacking]
         targets = [s for s in zone.ships if not s.is_attacking]
@@ -69,3 +78,16 @@ class BattleManager:
             self.ships.remove(attacker)
             return f"{attacker.name} ran out of ammunition and leaves."
         return "Both ships survived the battle."
+
+    def get_statistics(self):
+        available_ships = [s for s in self.ships if s.is_available]
+        result = f"Available Battleships: {len(available_ships)}"
+        if available_ships:
+            ship_names = ", ".join(s.name for s in available_ships)
+            result += f"\n#{ship_names}#"
+        result += "\n***Zones Statistics:***"
+        result += f"\nTotal Zones: {len(self.zones)}"
+        sorted_zones = sorted(self.zones, key=lambda z: z.code)
+        for zone in sorted_zones:
+            result += f"\n{zone.zone_info()}"
+        return result
