@@ -46,4 +46,6 @@ class BaseCollector(ABC):
         return self.available_money >= artifact_price and self.available_space >= artifact_space_required
 
     def __str__(self):
-        pass
+        artifacts_count = len(self.purchased_artifacts)
+        return (f"{self.name} - Money: ${self.available_money:.2f}, "
+                f"Space: {self.available_space} sq ft, Artifacts: {artifacts_count}")

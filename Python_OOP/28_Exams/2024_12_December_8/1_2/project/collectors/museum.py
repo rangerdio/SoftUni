@@ -6,4 +6,4 @@ class Museum(BaseCollector):
         super().__init__(name, 15000.0, 2000)
 
     def increase_money(self):
-        pass
+        self.available_money += 1000.0

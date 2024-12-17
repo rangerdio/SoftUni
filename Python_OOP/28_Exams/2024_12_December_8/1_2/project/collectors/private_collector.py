@@ -6,4 +6,5 @@ class PrivateCollector(BaseCollector):
         super().__init__(name, 25000.0, 3000)
 
     def increase_money(self):
-        pass
+        self.available_money += 5000.0
+
