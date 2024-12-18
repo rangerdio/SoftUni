@@ -1,15 +1,29 @@
 from abc import ABC, abstractmethod
 
-
 class BaseWaiter(ABC):
     def __init__(self, name: str, hours_worked: int):
-        if not (3 <= len(name) <= 50):
-            raise ValueError("Waiter name must be between 3 and 50 characters in length!")
-        if hours_worked < 0:
-            raise ValueError("Cannot have negative hours worked!")
-
         self.name = name
         self.hours_worked = hours_worked
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value: str):
+        if not (3 <= len(value) <= 50):
+            raise ValueError("Waiter name must be between 3 and 50 characters in length!")
+        self._name = value
+
+    @property
+    def hours_worked(self):
+        return self._hours_worked
+
+    @hours_worked.setter
+    def hours_worked(self, value: int):
+        if value < 0:
+            raise ValueError("Cannot have negative hours worked!")
+        self._hours_worked = value
 
     @abstractmethod
     def calculate_earnings(self):
