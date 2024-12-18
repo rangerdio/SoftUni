@@ -71,9 +71,10 @@ class SummitQuestManagerApp:
 
     def get_statistics(self):
         successful_climbers = [c for c in self.climbers if c.conquered_peaks]
+        total_peaks = sum(len(set(c.conquered_peaks)) for c in successful_climbers)
         successful_climbers.sort(key=lambda c: (-len(c.conquered_peaks), c.name))
 
-        result = [f"Total climbed peaks: {sum(len(c.conquered_peaks) for c in successful_climbers)}"]
+        result = [f"Total climbed peaks: {total_peaks}"]
         result.append("**Climber's statistics:**")
 
         for climber in successful_climbers:

@@ -41,5 +41,6 @@ class BaseClimber(ABC):
         self.strength += 15
 
     def __str__(self):
-        conquered = ", ".join(self.conquered_peaks)
+        conquered = ", ".join(sorted(self.conquered_peaks))
         return f"{self.__class__.__name__}: /// Climber name: {self.name} * Left strength: {self.strength:.1f} * Conquered peaks: {conquered} ///"
+
