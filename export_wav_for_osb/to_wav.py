@@ -25,7 +25,7 @@ for filename in os.listdir(folder_path):
             audio = audio.set_sample_width(TARGET_SAMPLE_WIDTH)
 
             # Export to new WAV file (PCM 16-bit)
-            out_filename = os.path.splitext(filename)[0] + "_converted.wav"
+            out_filename = "new_" + os.path.splitext(filename)[0] + ".wav"
             out_path = os.path.join(folder_path, out_filename)
             audio.export(out_path, format="wav", codec="pcm_s16le")
 
