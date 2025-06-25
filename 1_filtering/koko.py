@@ -1,3 +1,10 @@
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+
 def transform_sip(sip_ids):
     return ['(sip.Call-ID == "{}")'.format(sip_id) for sip_id in sip_ids]
 
@@ -19,8 +26,6 @@ def transform_mgcp_ids(mgcp_ids):
 
 
 def wireshark_filtering(raw_data):
-    wireshark_filter = '\n\n'
-
     if not raw_data:
         return "No valid IDs found to create Wireshark Filter."
 
@@ -47,13 +52,26 @@ def wireshark_filtering(raw_data):
         filter_parts.extend(transform_csta(csta_ids))
     if csta_ids_2nd:
         filter_parts.extend(transform_csta_2nd(csta_ids_2nd))
-    if csta_extra_sst:
-        filter_parts.extend(transform_csta_extra_sst(csta_extra_sst))
+        if csta_extra_sst:
+            filter_parts.extend(transform_csta_extra_sst(csta_extra_sst))
     if mgcp_ids:
         filter_parts.extend(transform_mgcp_ids(mgcp_ids))
 
-    wireshark_filter += "Wireshark Filter:\n" + ' or '.join(filter_parts)
-    return wireshark_filter
+    return ' or '.join(filter_parts)  # Output without "Wireshark Filter:"
 
 
-editor.appendText(wireshark_filtering(editor.getText()))
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
+@app.route('/generate_filter', methods=['POST'])
+def generate_filter():
+    data = request.json.get("raw_data", "")
+    result = wireshark_filtering(data)
+    return jsonify({"filter": result})
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
