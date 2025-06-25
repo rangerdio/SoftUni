@@ -11,7 +11,7 @@ folder_path = "."
 
 # Process all .mp3 and .wav files
 for filename in os.listdir(folder_path):
-    if filename.lower().endswith((".mp3", ".wav")) and not filename.endswith("_converted.wav"):
+    if filename.lower().endswith((".mp3", ".wav")) and not filename.startswith("new_"):
         filepath = os.path.join(folder_path, filename)
         print(f"Processing: {filename}")
 
